@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CircularMove : MonoBehaviour
 {
-    public float dancerSpeed = 5;
-    public float bodySpeed = 5;
+    public static CircularMove Instance;
+    public float dancerSpeed = 20;
+    public float bodySpeed = 20;
     public Transform totem;
-    public int Gap = 10;
+    public int Gap = 150;
 
     // References
     public GameObject BodyPrefab;
@@ -15,8 +17,15 @@ public class CircularMove : MonoBehaviour
     // Lists
     public List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionsHistory = new List<Vector3>();
-
-    // Update is called once per frame
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    
     void FixedUpdate() {
 
         // Move forward
@@ -46,12 +55,5 @@ public class CircularMove : MonoBehaviour
         // add it to the list
         GameObject body = Instantiate(BodyPrefab);
         BodyParts.Add(body);
-    }
-
-    public void SpeedUp()
-    { 
-        dancerSpeed = 40;
-        bodySpeed = 40;
-        Gap = 75;
     }
 }
