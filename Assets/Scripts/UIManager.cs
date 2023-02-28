@@ -1,59 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening.Core;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    private int circleIndexTransform = -3;
     private float startingTime;
     public float baseLinePower = 2f;
     public float maxSpeed = 40;
     public float minGap = 75;
-    public bool speedUpButton = false;
-    public bool speedDownButton = false;
+    public GameObject DancerParrentPrefab;
     
     private void Update()
     {
-        if(speedUpButton)
-        {
-            startingTime = Time.time;
-        }
-        
-        if(speedUpButton)
+        if(Input.GetKey(KeyCode.Mouse0))
         {
             if(CircularMove.Instance.dancerSpeed < maxSpeed)
             {
-                CircularMove.Instance.dancerSpeed += (Time.time - startingTime) * baseLinePower;
+                CircularMove.Instance.dancerSpeed += baseLinePower*Time.deltaTime;
             }
+            
             
             if(CircularMove.Instance.Gap > minGap)
             {
-                CircularMove.Instance.dancerSpeed -= (Time.time - startingTime) * baseLinePower;
-            }
-        }
-        
-        if(speedDownButton)
-        {
-            if(CircularMove.Instance.dancerSpeed > 20)
-            {
-                CircularMove.Instance.dancerSpeed -= (Time.time - startingTime) * baseLinePower;
+                CircularMove.Instance.Gap -= (int)(baseLinePower*Time.deltaTime);
             }
             
-            if(CircularMove.Instance.Gap > 150)
-            {
-                CircularMove.Instance.dancerSpeed += (Time.time - startingTime) * baseLinePower;
-            }
         }
     }
 
-    public void OnSpeedUp()
+    public void OnAddNewCircle()
     {
-        Debug.Log("asdasdasdasdasdasdas");
-        speedUpButton = true;
-    }
-    
-    public void OnSpeedDown()
-    {
-        speedDownButton = true;
+        Instantiate(DancerParrentPrefab, new Vector3(0, 1, circleIndexTransform), Quaternion.identity);
+        circleIndexTransform -= 1;
     }
 }

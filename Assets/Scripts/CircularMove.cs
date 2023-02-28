@@ -28,7 +28,7 @@ public class CircularMove : MonoBehaviour
     
     void FixedUpdate() {
 
-        // Move forward
+        // Move circular
         transform.RotateAround(totem.position, Vector3.up, dancerSpeed * Time.deltaTime);
 
         // Store position history
