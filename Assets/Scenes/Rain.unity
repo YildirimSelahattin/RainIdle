@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfac4d825fc6988419a0f0ee5b22d938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPeople: 40
+  numberOfPeople: 3
   farmerSpeed: []
   speedButtonLevel: 0
   totemUpgradeButtonLevel: 0
@@ -913,9 +913,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CreateCircle, Assembly-CSharp
-        m_MethodName: OnClickCreateCircle
+      - m_Target: {fileID: 1409541962}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickAddCircle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1762,9 +1762,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CreateCircle, Assembly-CSharp
-        m_MethodName: OnClickCreateCircle
+      - m_Target: {fileID: 1409541962}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AddFarmer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1860,6 +1860,7 @@ MonoBehaviour:
   farmParentsParent: {fileID: 1105232267}
   circleParentsList: []
   farmParentsList: []
+  indexToAddNext: 0
   currentCircle: 0
 --- !u!4 &1409541963
 Transform:

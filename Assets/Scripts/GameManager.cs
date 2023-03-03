@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     // Start is called before the first frame update
     public float[] circleRadiuses;
     public float[] farmRadiuses;
@@ -22,6 +23,15 @@ public class GameManager : MonoBehaviour
     public int indexToAddNext;
 
     public int currentCircle;
+    
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    
     void Start()
     {
         DesignLevel();
