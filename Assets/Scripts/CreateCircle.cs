@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 public class CreateCircle : MonoBehaviour {
     // Instantiates prefabs in a circle formation
