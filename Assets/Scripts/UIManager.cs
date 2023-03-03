@@ -10,11 +10,6 @@ public class UIManager : MonoBehaviour
     public float maxSpeed = 40;
     public float minGap = 75;
     public GameObject DancerParrentPrefab;
-    
-    private void Update()
-    {
-        
-    }
 
     public void OnAddNewCircle()
     {
