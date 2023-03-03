@@ -73,6 +73,18 @@ public class GameManager : MonoBehaviour
         }
         currentCircle = circleCount;
         indexToAddNext = counter;
+
+        if(indexToAddNext == numberOfGridsInCircle[currentCircle])
+        {
+            UIManager.Instance.addCircleButton.interactable=true;
+            UIManager.Instance.addPeopleButton.interactable=false;
+
+        }
+        else
+        {
+            UIManager.Instance.addCircleButton.interactable=false);
+            UIManager.Instance.addPeopleButton.interactable=true);
+        }
     }
     /*  public void OnClickCreateCircle(int numberOfObjects,float radius )
       {
@@ -140,8 +152,9 @@ public class GameManager : MonoBehaviour
         else
         {
             //close add people button
-            
+            UIManager.Instance.addPeopleButton.interactable=false;
             //open add circle button
+            UIManager.Instance.addCircleButton.interactable=true;
         }
         
     }
@@ -153,5 +166,10 @@ public class GameManager : MonoBehaviour
         circleParentsList.Add(currentCircleObject);
         GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle]);
         farmParentsList.Add(currentFarm);
+        //close add people button
+        UIManager.Instance.addPeopleButton.interactable=true;
+        //open add circle button
+        UIManager.Instance.addCircleButton.interactable=false;
+
     }
 }
