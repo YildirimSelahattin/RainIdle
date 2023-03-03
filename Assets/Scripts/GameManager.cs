@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
         DesignLevel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DesignLevel()
     {
         int tempNumberOfPeople = GameDataManager.Instance.numberOfPeople;
@@ -83,6 +77,9 @@ public class GameManager : MonoBehaviour
         temp.name = "Circle";
         GameObject parentCircle = Instantiate(temp, new Vector3(0, 0, 0), Quaternion.identity, CircleParentsParent.transform);
         parentCircle.AddComponent<CircleManager>();
+        parentCircle.AddComponent<RotateCircle>();
+        parentCircle.GetComponent<RotateCircle>().planetSpeed = 20;
+        
         for (int i = 0; i < numberOfObjects; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfObjects;

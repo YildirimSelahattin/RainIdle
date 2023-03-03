@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotateCircle : MonoBehaviour
 {
     public float planetSpeed = 2f;
+    
     void FixedUpdate()
     {
 
