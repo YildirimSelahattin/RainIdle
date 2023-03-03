@@ -82,8 +82,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.addCircleButton.interactable=false);
-            UIManager.Instance.addPeopleButton.interactable=true);
+            UIManager.Instance.addCircleButton.interactable=false;
+            UIManager.Instance.addPeopleButton.interactable=true;
         }
     }
     /*  public void OnClickCreateCircle(int numberOfObjects,float radius )
