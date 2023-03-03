@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
-    private int circleIndexTransform = -3;
-    private float startingTime;
-    public float baseLinePower = 2f;
-    public float maxSpeed = 40;
-    public float minGap = 75;
-    public GameObject DancerParrentPrefab;
-
-    public void OnAddNewCircle()
+    public static UIManager Instance;
+    public Button upgradeTotemButton;
+    public Button addPeopleButton;
+    public Button incomeButton;
+    public Button speedButton;
+    public Button addCircleButton;
+    public Button rainButton;
+    
+    private void Awake()
     {
-        Instantiate(DancerParrentPrefab, new Vector3(0, 1, circleIndexTransform), Quaternion.identity);
-        circleIndexTransform -= 1;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
     }
-    public void OnAddPeople()
+
+    public void OnSpeedUpgradeButton()
     {
-       
+        foreach (GameObject circle in GameManager.Instance.circleParentsList)
+        {
+            GameDataManager.Instance.speedButtonLevel++;
+            circle.GetComponent<RotateCircle>().planetSpeed *= 1.1f;
+        }
     }
 }

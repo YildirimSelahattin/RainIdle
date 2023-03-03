@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     // Start is called before the first frame update
     public float[] circleRadiuses;
     public float[] farmRadiuses;
@@ -18,6 +19,15 @@ public class GameManager : MonoBehaviour
     public List<GameObject> circleParentsList;
     public List<GameObject> farmParentsList;
     public int currentCircle;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    
     void Start()
     {
         DesignLevel();
@@ -42,7 +52,7 @@ public class GameManager : MonoBehaviour
                 tempNumberOfPeople -= numberOfGridsInCircle[circleCount];
                 howManyPeopleToAdd = numberOfGridsInCircle[circleCount];
             }
-            GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount]);
+            GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount], circleCount);
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount]);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
@@ -51,7 +61,6 @@ public class GameManager : MonoBehaviour
                 Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(i).transform);
             }
             circleCount++;
-            
         }
         currentCircle = circleCount - 1;
 
@@ -71,15 +80,14 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    public GameObject CreateCircleGameData(int numberOfObjects,float radius)
+    public GameObject CreateCircleGameData(int numberOfObjects,float radius,int currentCircle)
     {
         GameObject temp = new GameObject();
         temp.name = "Circle";
         GameObject parentCircle = Instantiate(temp, new Vector3(0, 0, 0), Quaternion.identity, CircleParentsParent.transform);
         parentCircle.AddComponent<CircleManager>();
         parentCircle.AddComponent<RotateCircle>();
-        parentCircle.GetComponent<RotateCircle>().planetSpeed = 20;
-        
+
         for (int i = 0; i < numberOfObjects; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfObjects;
