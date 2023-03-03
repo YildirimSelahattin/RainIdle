@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices;
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,14 +11,16 @@ public class GameManager : MonoBehaviour
     public float[] circleRadiuses;
     public float[] farmRadiuses;
     public GameObject[] circlesCharacterArray;
-    public int[] numberOfGridsInCircle; 
-    public int[] numberOfGridsInFarm; 
-   
+    public int[] numberOfGridsInCircle;
+    public int[] numberOfGridsInFarm;
+
     public GameObject gridPrefab;
     public GameObject CircleParentsParent;
     public GameObject farmParentsParent;
     public List<GameObject> circleParentsList;
     public List<GameObject> farmParentsList;
+    public int indexToAddNext;
+
     public int currentCircle;
     void Start()
     {
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         int tempNumberOfPeople = GameDataManager.Instance.numberOfPeople;
         int circleCount = 0;
-
+        int counter = 0;
         while (tempNumberOfPeople != 0)
         {
             Debug.Log(tempNumberOfPeople);
@@ -46,32 +50,35 @@ public class GameManager : MonoBehaviour
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount]);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
-            for (int i = 0; i < howManyPeopleToAdd;i++)
+            for (counter = 0; counter < howManyPeopleToAdd; counter++)
             {
-                Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(i).transform);
+                Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(counter).transform);
             }
-            circleCount++;
-            
-        }
-        currentCircle = circleCount - 1;
 
+            if (tempNumberOfPeople != 0)
+            {
+                circleCount++;
+            }
+
+        }
+        currentCircle = circleCount;
+        indexToAddNext = counter;
     }
+    /*  public void OnClickCreateCircle(int numberOfObjects,float radius )
+      {
+          for (int i = 0; i < numberOfObjects; i++)
+          {
+              float angle = i * Mathf.PI * 2 / numberOfObjects;
+              float x = Mathf.Cos(angle) * radius;
+              float z = Mathf.Sin(angle) * radius;
+              Vector3 pos = transform.position + new Vector3(x, 0, z);
+              float angleDegrees = -angle * Mathf.Rad2Deg;
+              Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+              Instantiate(dancerPrefab, pos, rot, gameObject.transform);
+          }
+      }*/
 
-  /*  public void OnClickCreateCircle(int numberOfObjects,float radius )
-    {
-        for (int i = 0; i < numberOfObjects; i++)
-        {
-            float angle = i * Mathf.PI * 2 / numberOfObjects;
-            float x = Mathf.Cos(angle) * radius;
-            float z = Mathf.Sin(angle) * radius;
-            Vector3 pos = transform.position + new Vector3(x, 0, z);
-            float angleDegrees = -angle * Mathf.Rad2Deg;
-            Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-            Instantiate(dancerPrefab, pos, rot, gameObject.transform);
-        }
-    }*/
-
-    public GameObject CreateCircleGameData(int numberOfObjects,float radius)
+    public GameObject CreateCircleGameData(int numberOfObjects, float radius)
     {
         GameObject temp = new GameObject();
         temp.name = "Circle";
@@ -79,7 +86,7 @@ public class GameManager : MonoBehaviour
         parentCircle.AddComponent<CircleManager>();
         parentCircle.AddComponent<RotateCircle>();
         parentCircle.GetComponent<RotateCircle>().planetSpeed = 20;
-        
+
         for (int i = 0; i < numberOfObjects; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfObjects;
@@ -88,7 +95,8 @@ public class GameManager : MonoBehaviour
             Vector3 pos = transform.position + new Vector3(x, 0, z);
             float angleDegrees = -angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-            Instantiate(gridPrefab, pos, rot, parentCircle.transform);
+            GameObject grid = Instantiate(gridPrefab, pos, rot, parentCircle.transform);
+            parentCircle.GetComponent<CircleManager>().listOfGrids.Add(grid);
         }
         return parentCircle;
     }
@@ -97,7 +105,7 @@ public class GameManager : MonoBehaviour
         GameObject temp = new GameObject();
         temp.name = "Farm";
         GameObject parentCircle = Instantiate(temp, new Vector3(0, 0, 0), Quaternion.identity, farmParentsParent.transform);
-        farmParentsParent.AddComponent<CircleManager>();
+        parentCircle.AddComponent<CircleManager>();
         for (int i = 0; i < numberOfObjects; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfObjects;
@@ -109,5 +117,31 @@ public class GameManager : MonoBehaviour
             Instantiate(gridPrefab, pos, rot, parentCircle.transform);
         }
         return parentCircle;
+    }
+    public void AddFarmer()
+    {
+        if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
+        {
+            Instantiate(circlesCharacterArray[currentCircle], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
+            //farm instantiate
+            indexToAddNext++;
+            GameDataManager.Instance.numberOfPeople++;
+        }
+        else
+        {
+            //close add people button
+            
+            //open add circle button
+        }
+        
+    }
+    public void OnClickAddCircle()
+    {
+        currentCircle++;
+        indexToAddNext = 0;
+        GameObject currentCircleObject = CreateCircleGameData(numberOfGridsInCircle[currentCircle], circleRadiuses[currentCircle]);
+        circleParentsList.Add(currentCircleObject);
+        GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle]);
+        farmParentsList.Add(currentFarm);
     }
 }

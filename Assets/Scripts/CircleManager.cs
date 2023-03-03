@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CircleManager : MonoBehaviour
 {
-    List<GameObject> listOfGrids = new List<GameObject>();
+    public List<GameObject> listOfGrids = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
