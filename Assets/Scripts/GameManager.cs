@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject farmParentsParent;
     public List<GameObject> circleParentsList;
     public List<GameObject> farmParentsList;
+    public List<GameObject> farmerList;
     public int indexToAddNext;
 
     public int currentCircle;
@@ -62,7 +64,8 @@ public class GameManager : MonoBehaviour
             farmParentsList.Add(currentFarm);
             for (counter = 0; counter < howManyPeopleToAdd; counter++)
             {
-                Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(counter).transform);
+                GameObject tempFarmer = Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(counter).transform);
+                farmerList.Add(tempFarmer);
             }
 
             if (tempNumberOfPeople != 0)
@@ -132,10 +135,17 @@ public class GameManager : MonoBehaviour
     {
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
         {
-            Instantiate(circlesCharacterArray[currentCircle], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
+            GameObject tempFarmer = Instantiate(circlesCharacterArray[currentCircle], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
+            farmerList.Add(tempFarmer);
             //farm instantiate
             indexToAddNext++;
             GameDataManager.Instance.numberOfPeople++;
+            
+            foreach (GameObject farmer in farmerList)
+            {
+                farmer.SetActive(false);
+                farmer.SetActive(true);
+            }
         }
         else
         {
@@ -143,6 +153,8 @@ public class GameManager : MonoBehaviour
             
             //open add circle button
         }
+
+        
         
     }
     public void OnClickAddCircle()
