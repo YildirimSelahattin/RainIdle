@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float[] circleRadiuses;
     public float[] farmRadiuses;
     public GameObject[] circlesCharacterArray;
+    public GameObject[] circlesCutterCharacterArray;
     public GameObject[] farmCropArray;
     public int[] numberOfGridsInCircle;
     public int[] numberOfGridsInFarm;
@@ -64,11 +65,15 @@ public class GameManager : MonoBehaviour
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount]);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
-            for (counter = 0; counter < howManyPeopleToAdd; counter++)
+            //add cutter farmer
+
+            Instantiate(circlesCutterCharacterArray[circleCount], currentCircle.transform.GetChild(0).transform);
+            for (counter = 1; counter < howManyPeopleToAdd+1; counter++)
             {
+                
                 GameObject tempFarmer = Instantiate(circlesCharacterArray[circleCount], currentCircle.transform.GetChild(counter).transform);
                 farmerList.Add(tempFarmer);
-                GameObject tempCrop = Instantiate(farmCropArray[circleCount], currentFarm.transform.GetChild(counter).transform);
+                GameObject tempCrop = Instantiate(farmCropArray[circleCount], currentFarm.transform.GetChild(counter-1).transform);
 
             }
 
