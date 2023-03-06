@@ -28,4 +28,11 @@ public class UIManager : MonoBehaviour
             circle.GetComponent<RotateCircle>().planetSpeed *= 1.1f;
         }
     }
+
+    public void OnTotemUpgradeButton()
+    {
+        GameDataManager.Instance.totemUpgradeButtonLevel++;
+        GameManager.Instance.totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
+        GameManager.Instance.IncreaseAllFarmerLevels();
+    }
 }

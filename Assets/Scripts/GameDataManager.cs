@@ -15,7 +15,6 @@ public class GameDataManager : MonoBehaviour
     public int addCircleButtonLevel;
     public int incomeButtonLevel;
     public int incomeMultiplier;
-
     private void Awake()
     {
         if(Instance == null)
