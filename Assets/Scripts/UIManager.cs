@@ -36,8 +36,6 @@ public class UIManager : MonoBehaviour
     {
         if (GameDataManager.Instance.totemUpgradeButtonMoney > GameDataManager.Instance.totalMoney)
         {
-            GameDataManager.Instance.totemUpgradeButtonLevel++;
-            GameManager.Instance.totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
             GameManager.Instance.IncreaseAllFarmerLevels();
         }
     }
