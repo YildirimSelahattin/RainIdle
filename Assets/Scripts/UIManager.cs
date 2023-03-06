@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        totalMoneyText.text = GameDataManager.Instance.totalMoney.ToString();
+        totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
         upgradeTotemButtonPrice.text = GameDataManager.Instance.totemUpgradeButtonMoney.ToString();
         addPeopleButtonPrice.text = GameDataManager.Instance.addFarmerButtonMoney.ToString();
         incomeButtonPrice.text = GameDataManager.Instance.incomeButtonMoney.ToString();
@@ -37,7 +37,9 @@ public class UIManager : MonoBehaviour
 
     public void OnSpeedUpgradeButton()
     {
-        if (GameDataManager.Instance.speedButtonButtonMoney > GameDataManager.Instance.totalMoney)
+        Debug.Log("Speed Money: " + GameDataManager.Instance.speedButtonButtonMoney);
+        Debug.Log("Total Money: " + GameDataManager.Instance.TotalMoney);
+        if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
             
@@ -50,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void OnTotemUpgradeButton()
     {
-        if (GameDataManager.Instance.totemUpgradeButtonMoney > GameDataManager.Instance.totalMoney)
+        if (GameDataManager.Instance.totemUpgradeButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeTotemMoney();
             
@@ -60,7 +62,7 @@ public class UIManager : MonoBehaviour
 
     public void OnIncomeButton()
     {
-        if (GameDataManager.Instance.incomeButtonMoney > GameDataManager.Instance.totalMoney)
+        if (GameDataManager.Instance.incomeButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeIncomeMoney();
         }

@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class CropManager : MonoBehaviour
 {
+    public static CropManager Instance;
     public float growTime = 10f;
     public int currentCircle;
-
+    public float cropPrice = 20;
 
     void Start()
     {
@@ -25,8 +26,11 @@ public class CropManager : MonoBehaviour
 
         if (other.gameObject.tag == "Cutter1")
         {
-            Debug.Log("sa");
+            transform.DOKill();
             transform.DOLocalMoveY(1f, 0.2f).OnComplete(() => CropGrow());
+
+            GameDataManager.Instance.TotalMoney += cropPrice;
+            UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
         }
     }
 }
