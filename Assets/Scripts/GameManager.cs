@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public float[] circleRadiuses;
     public float[] farmRadiuses;
-    public List<GameObject[]> circleCharacterArray;
-    public List<GameObject[]> circleCutterArray;
+    public List<GameObject[]> circleCharacterArray = new List<GameObject[]>();
+    public List<GameObject[]> circleCutterArray = new List<GameObject[]>();
     public GameObject[] circles0CharacterArray;
     public GameObject[] circles1CharacterArray;
     public GameObject[] circles2CharacterArray;

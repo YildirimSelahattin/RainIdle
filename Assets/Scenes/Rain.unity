@@ -395,7 +395,7 @@ MonoBehaviour:
   numberOfPeople: 1
   farmerSpeed: []
   speedButtonLevel: 0
-  totemUpgradeButtonLevel: 0
+  totemUpgradeButtonLevel: 1
   addFarmerButtonLevel: 0
   addCircleButtonLevel: 0
   incomeButtonLevel: 0
@@ -1113,9 +1113,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4923621884956650715, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4906838889796845047, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -208595431880416365, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
       propertyPath: m_Name
       value: totem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504409719310791647, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917349904687423284, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
@@ -1667,6 +1695,11 @@ Transform:
   m_Father: {fileID: 1758783846}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1234224998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4906838889796845047, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1308453567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +1932,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341786746}
   m_CullTransparentMesh: 1
+--- !u!1 &1389949018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4923621884956650715, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409541961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,17 +1974,67 @@ MonoBehaviour:
   - 3.5
   - 6
   - 8.5
-  circlesCharacterArray:
+  circles0CharacterArray:
+  - {fileID: 0}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  circlesCutterCharacterArray:
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  circles1CharacterArray:
+  - {fileID: 0}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  circles2CharacterArray:
+  - {fileID: 0}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  circles0CutterCharacterArray:
+  - {fileID: 0}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  farmCropArray: []
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  circles1CutterCharacterArray:
+  - {fileID: 0}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  circles2CutterCharacterArray:
+  - {fileID: 0}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  farmCropArray:
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
   numberOfGridsInCircle: 070000000d00000013000000
   numberOfGridsInFarm: 060000000c00000012000000
+  totemParts:
+  - {fileID: 1766548828}
+  - {fileID: 1549771822}
+  - {fileID: 1234224998}
+  - {fileID: 1733775341}
+  - {fileID: 2130279186}
+  - {fileID: 1389949018}
   gridPrefab: {fileID: 5166804174155917163, guid: f447fd036083a6848874e5d73999f3b7, type: 3}
   CircleParentsParent: {fileID: 1412437343}
   farmParentsParent: {fileID: 1105232267}
@@ -2001,6 +2089,11 @@ Transform:
   m_Father: {fileID: 1758783846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1549771822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -208595431880416365, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1648418446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,9 +2312,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CreateCircle, Assembly-CSharp
-        m_MethodName: OnClickCreateCircle
+      - m_Target: {fileID: 437089794}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnTotemUpgradeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2404,6 +2497,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675864346}
   m_CullTransparentMesh: 1
+--- !u!1 &1733775341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504409719310791647, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1745063399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,6 +2741,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1766548828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802244516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,3 +2881,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802244516}
   m_CullTransparentMesh: 1
+--- !u!1 &2130279186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7917349904687423284, guid: a074c894e768ad9488b6b8f4940aabe8, type: 3}
+  m_PrefabInstance: {fileID: 611251693}
+  m_PrefabAsset: {fileID: 0}
