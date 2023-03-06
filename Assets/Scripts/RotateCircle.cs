@@ -8,7 +8,6 @@ public class RotateCircle : MonoBehaviour
     
     void FixedUpdate()
     {
-
         transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime);
     }
 }

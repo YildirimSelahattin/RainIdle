@@ -184,6 +184,8 @@ public class GameManager : MonoBehaviour
     {
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
         {
+            GameDataManager.Instance.UpgradeAddFarmerMoney();
+            
             GameObject tempFarmer = Instantiate(circleCharacterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);
             GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext).transform);
@@ -213,6 +215,8 @@ public class GameManager : MonoBehaviour
     }
     public void OnClickAddCircle()
     {
+        GameDataManager.Instance.UpgradeAddCircleMoney();
+        
         currentCircle++;
         Camera.main.orthographicSize = cameraSizeArray[currentCircle];
         indexToAddNext = 1;
@@ -230,7 +234,6 @@ public class GameManager : MonoBehaviour
     public void IncreaseAllFarmerLevels()
     {
         farmerList = new List<GameObject>();
-        GameDataManager.Instance.totemUpgradeButtonLevel++;
         totemParts[GameDataManager.Instance.totemUpgradeButtonLevel ].SetActive(true);
         for (int circleCounter = 0; circleCounter < circleParentsList.Count; circleCounter++)
         {//for every parent
