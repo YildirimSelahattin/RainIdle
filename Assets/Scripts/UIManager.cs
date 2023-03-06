@@ -11,10 +11,10 @@ public class UIManager : MonoBehaviour
     public Button speedButton;
     public Button addCircleButton;
     public Button rainButton;
-    
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -34,10 +34,9 @@ public class UIManager : MonoBehaviour
 
     public void OnTotemUpgradeButton()
     {
-        if (GameDataManager.Instance.totemUpgradeButtonMoney > GameDataManager.Instance.totalMoney)
-        {
-            GameManager.Instance.IncreaseAllFarmerLevels();
-        }
+
+        GameManager.Instance.IncreaseAllFarmerLevels();
+
     }
 
     public void OnIncomeButton()
@@ -49,6 +48,6 @@ public class UIManager : MonoBehaviour
 
     public void OnRainButton()
     {
-        
+
     }
 }

@@ -3,7 +3,42 @@ guid: 6a0ea07faba452c479cbfef1e47e1e09
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beyaz.002
+    second: {fileID: 2100000, guid: b8bddbb635747004eb994a915ec5f1c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kahverengi.002
+    second: {fileID: 2100000, guid: 0ded5c9f93355d34e94909cfc4959adc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah.001
+    second: {fileID: 2100000, guid: a5cbc57e5fb1c0f42b7eea6f1b1c87db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tenk rengo.005
+    second: {fileID: 2100000, guid: d0e3aef80a1d3c94d8f64d8c8b0e27f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tenk rengo.006
+    second: {fileID: 2100000, guid: 8cf419f47455faa4c8ca42a0daf84e64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "ye\u015Fil.002"
+    second: {fileID: 2100000, guid: 6b165ec924cffb54591d166190eaff7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "ye\u015Fil.003"
+    second: {fileID: 2100000, guid: 423c1a57bce617f4ea00aade763719be, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
