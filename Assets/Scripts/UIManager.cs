@@ -22,17 +22,35 @@ public class UIManager : MonoBehaviour
 
     public void OnSpeedUpgradeButton()
     {
-        foreach (GameObject circle in GameManager.Instance.circleParentsList)
+        if (GameDataManager.Instance.speedButtonButtonMoney > GameDataManager.Instance.totalMoney)
         {
-            GameDataManager.Instance.speedButtonLevel++;
-            circle.GetComponent<RotateCircle>().planetSpeed *= 1.1f;
+            foreach (GameObject circle in GameManager.Instance.circleParentsList)
+            {
+                GameDataManager.Instance.speedButtonLevel++;
+                circle.GetComponent<RotateCircle>().planetSpeed *= 1.1f;
+            }
         }
     }
 
     public void OnTotemUpgradeButton()
     {
-        GameDataManager.Instance.totemUpgradeButtonLevel++;
-        GameManager.Instance.totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
-        GameManager.Instance.IncreaseAllFarmerLevels();
+        if (GameDataManager.Instance.totemUpgradeButtonMoney > GameDataManager.Instance.totalMoney)
+        {
+            GameDataManager.Instance.totemUpgradeButtonLevel++;
+            GameManager.Instance.totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
+            GameManager.Instance.IncreaseAllFarmerLevels();
+        }
+    }
+
+    public void OnIncomeButton()
+    {
+        if (GameDataManager.Instance.incomeButtonMoney > GameDataManager.Instance.totalMoney)
+        {
+        }
+    }
+
+    public void OnRainButton()
+    {
+        
     }
 }
