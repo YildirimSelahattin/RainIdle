@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject tempFarmer = Instantiate(circlesCharacterArray[currentCircle], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);
-            GameObject tempCrop = Instantiate(farmCropArray[currentCircle], currentFarm.transform.GetChild(counter).transform);
+            GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext).transform);
             //farm instantiate
             indexToAddNext++;
             GameDataManager.Instance.numberOfPeople++;
