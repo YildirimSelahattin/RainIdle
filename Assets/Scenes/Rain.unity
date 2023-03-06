@@ -745,6 +745,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4287a1ecabf8ed24eaa165398a529faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeTotemButton: {fileID: 1667894374}
+  addPeopleButton: {fileID: 1341786748}
+  incomeButton: {fileID: 6808980}
+  speedButton: {fileID: 1648418448}
+  addCircleButton: {fileID: 601163503}
+  rainButton: {fileID: 745053327}
 --- !u!4 &437089795
 Transform:
   m_ObjectHideFlags: 0
@@ -1853,6 +1859,10 @@ MonoBehaviour:
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
   - {fileID: 8813717673961541876, guid: d2ff5ddc188341943b73e0b46a8a8955, type: 3}
   - {fileID: 8813717673961541876, guid: 65088b135f28e9c47af4b7d0cdfecaae, type: 3}
+  farmCropArray:
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
   numberOfGridsInCircle: 060000000c00000012000000
   numberOfGridsInFarm: 060000000c00000012000000
   gridPrefab: {fileID: 5166804174155917163, guid: f447fd036083a6848874e5d73999f3b7, type: 3}
@@ -1860,6 +1870,7 @@ MonoBehaviour:
   farmParentsParent: {fileID: 1105232267}
   circleParentsList: []
   farmParentsList: []
+  farmerList: []
   indexToAddNext: 0
   currentCircle: 0
 --- !u!4 &1409541963
