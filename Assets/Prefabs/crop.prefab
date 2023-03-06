@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2592600847853218029}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0.358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -748,10 +748,11 @@ GameObject:
   - component: {fileID: 8813717673961541865}
   - component: {fileID: 8813717673961541864}
   - component: {fileID: 8813717673961541867}
-  - component: {fileID: 8813717673961541866}
+  - component: {fileID: 4315396372952203959}
+  - component: {fileID: 4161957955380514253}
   m_Layer: 0
   m_Name: crop
-  m_TagString: Untagged
+  m_TagString: crop1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +823,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8813717673961541866
+--- !u!114 &4315396372952203959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8813717673961541876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2964341a2b0054f877ab1ab0e1a656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growTime: 10
+--- !u!136 &4161957955380514253
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -830,9 +844,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8813717673961541876}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.253736
+  m_Height: 3.6839182
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.28963903, y: 0.22085345, z: 0.4640969}
