@@ -745,12 +745,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4287a1ecabf8ed24eaa165398a529faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeTotemButton: {fileID: 0}
-  addPeopleButton: {fileID: 0}
-  incomeButton: {fileID: 0}
-  speedButton: {fileID: 0}
-  addCircleButton: {fileID: 0}
-  rainButton: {fileID: 0}
+  upgradeTotemButton: {fileID: 1667894374}
+  addPeopleButton: {fileID: 1341786748}
+  incomeButton: {fileID: 6808980}
+  speedButton: {fileID: 1648418448}
+  addCircleButton: {fileID: 601163503}
+  rainButton: {fileID: 745053327}
 --- !u!4 &437089795
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,8 +2027,9 @@ MonoBehaviour:
   - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
   - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
   numberOfGridsInCircle: 070000000d00000013000000
-  numberOfGridsInFarm: 060000000c00000012000000
+  numberOfGridsInFarm: 070000000d00000013000000
   totemParts:
+  - {fileID: 0}
   - {fileID: 1766548828}
   - {fileID: 1549771822}
   - {fileID: 1234224998}
@@ -2042,6 +2043,10 @@ MonoBehaviour:
   farmParentsList: []
   farmerList: []
   indexToAddNext: 0
+  cameraSizeArray:
+  - 7
+  - 15.5
+  - 20
   currentCircle: 0
 --- !u!4 &1409541963
 Transform:

@@ -31,8 +31,7 @@ public class UIManager : MonoBehaviour
 
     public void OnTotemUpgradeButton()
     {
-        GameDataManager.Instance.totemUpgradeButtonLevel++;
-        GameManager.Instance.totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
+
         GameManager.Instance.IncreaseAllFarmerLevels();
     }
 }

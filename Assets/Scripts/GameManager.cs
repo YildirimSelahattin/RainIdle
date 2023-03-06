@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> farmParentsList;
     public List<GameObject> farmerList;
     public int indexToAddNext;
-
+    public float[] cameraSizeArray;
     public int currentCircle;
 
     private void Awake()
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         int circleCount = 0;
         int counter = 0;
 
-        for(int i = 0; i<GameDataManager.Instance.totemUpgradeButtonLevel; i++)
+        for(int i = 1; i<=GameDataManager.Instance.totemUpgradeButtonLevel; i++)
         {
             totemParts[i].SetActive(true);
         }
@@ -99,10 +99,12 @@ public class GameManager : MonoBehaviour
             if (tempNumberOfPeople != 0)
             {
                 circleCount++;
+               
             }
 
         }
         currentCircle = circleCount;
+        
         indexToAddNext = counter;
 
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
@@ -212,7 +214,8 @@ public class GameManager : MonoBehaviour
     public void OnClickAddCircle()
     {
         currentCircle++;
-        indexToAddNext = 0;
+        Camera.main.orthographicSize = cameraSizeArray[currentCircle];
+        indexToAddNext = 1;
         GameObject currentCircleObject = CreateCircleGameData(numberOfGridsInCircle[currentCircle], circleRadiuses[currentCircle]);
         circleParentsList.Add(currentCircleObject);
         Instantiate(circleCutterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircleObject.transform.GetChild(0).transform);
@@ -228,7 +231,7 @@ public class GameManager : MonoBehaviour
     {
         farmerList = new List<GameObject>();
         GameDataManager.Instance.totemUpgradeButtonLevel++;
-        totemParts[GameDataManager.Instance.totemUpgradeButtonLevel - 1].SetActive(true);
+        totemParts[GameDataManager.Instance.totemUpgradeButtonLevel ].SetActive(true);
         for (int circleCounter = 0; circleCounter < circleParentsList.Count; circleCounter++)
         {//for every parent
             GameObject gridObject = circleParentsList[circleCounter].transform.GetChild(0).gameObject;
@@ -237,9 +240,13 @@ public class GameManager : MonoBehaviour
             for (int gridCounter = 1; gridCounter < circleParentsList[circleCounter].transform.childCount; gridCounter++)
             {
                 gridObject = circleParentsList[circleCounter].transform.GetChild(gridCounter).gameObject;
-                Destroy(gridObject.transform.GetChild(0).gameObject);
-                GameObject temp = Instantiate(circleCharacterArray[circleCounter][GameDataManager.Instance.totemUpgradeButtonLevel], gridObject.transform);
-                farmerList.Add(temp);
+                if(gridObject.transform.childCount !=0)
+                {
+                    Destroy(gridObject.transform.GetChild(0).gameObject);
+                    GameObject temp = Instantiate(circleCharacterArray[circleCounter][GameDataManager.Instance.totemUpgradeButtonLevel], gridObject.transform);
+                    farmerList.Add(temp);
+                }
+                
             }
         }
     }
