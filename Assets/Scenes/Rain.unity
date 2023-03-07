@@ -403,12 +403,12 @@ MonoBehaviour:
   addCircleButtonLevel: 1
   incomeButtonLevel: 1
   incomeMultiplier: 1.1
-  totalMoney: 10000
-  addFarmerButtonMoney: 10
-  speedButtonButtonMoney: 5
-  addCircleButtonMoney: 10
-  incomeButtonMoney: 5
-  totemUpgradeButtonMoney: 10
+  totalMoney: 10
+  addFarmerButtonMoney: 150
+  speedButtonButtonMoney: 46
+  addCircleButtonMoney: 1950
+  incomeButtonMoney: 40
+  totemUpgradeButtonMoney: 75
 --- !u!4 &223095938
 Transform:
   m_ObjectHideFlags: 0

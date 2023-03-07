@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public int currentCircle;
     public bool addFarmerShouldbeOpened;
     public bool addCircleShouldbeOpened;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -61,10 +62,12 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.upgradeTotemButton.interactable = false;
         }
+        
         for (int i = 1; i<=GameDataManager.Instance.totemUpgradeButtonLevel; i++)
         {
             totemParts[i].SetActive(true);
         }
+        
         if(tempNumberOfPeople == 0)
         {
             GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[0], circleRadiuses[0]);
@@ -121,8 +124,6 @@ public class GameManager : MonoBehaviour
         }
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
         {
-            
-            
             UIManager.Instance.addPeopleButton.interactable = false;
             addFarmerShouldbeOpened = false;
             addCircleShouldbeOpened = true;
@@ -160,11 +161,11 @@ public class GameManager : MonoBehaviour
         parentCircle.AddComponent<RotateCircle>();
         if (currentCircle % 2 == 0)
         {
-            parentCircle.GetComponent<RotateCircle>().planetSpeed = -10 * Mathf.Pow(1.1f, GameDataManager.Instance.speedButtonLevel);
+            parentCircle.GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
         else
         {
-            parentCircle.GetComponent<RotateCircle>().planetSpeed = 10;
+            parentCircle.GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
 
         for (int i = 0; i < numberOfObjects; i++)
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
         }
         return parentCircle;
     }
+    
     public GameObject CreateFarmGameData(int numberOfObjects, float radius)
     {
         GameObject temp = new GameObject();
@@ -198,6 +200,7 @@ public class GameManager : MonoBehaviour
         }
         return parentCircle;
     }
+    
     public void AddFarmer()
     {
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
