@@ -131,26 +131,33 @@ public class GameDataManager : MonoBehaviour
 
     public void ControlButtons()
     {
-        if (TotalMoney >= TotemUpgradeButtonMoney) //activate totem button
+        if (totemUpgradeButtonLevel != 6)
         {
-            UIManager.Instance.upgradeTotemButton.interactable = true;
+            if (TotalMoney >= TotemUpgradeButtonMoney) //activate totem button
+            {
+                UIManager.Instance.upgradeTotemButton.interactable = true;
+            }
+            else
+            {
+                UIManager.Instance.upgradeTotemButton.interactable = false;
+            }
         }
-        else
+
+        if (GameManager.Instance.addFarmerShouldbeOpened)
         {
-            UIManager.Instance.upgradeTotemButton.interactable = false;
+            if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
+            {
+                Debug.Log("totalMoney" + TotalMoney);
+                Debug.Log("AddFarmerButtonMoney" + AddFarmerButtonMoney);
+                UIManager.Instance.addPeopleButton.interactable = true;
+            }
+            else
+            {
+                Debug.Log("sa");
+                UIManager.Instance.addPeopleButton.interactable = false;
+            }
         }
         
-        if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
-        {
-            Debug.Log("totalMoney" + TotalMoney);
-            Debug.Log("AddFarmerButtonMoney" + AddFarmerButtonMoney);
-            UIManager.Instance.addPeopleButton.interactable = true;
-        }
-        else
-        {
-            Debug.Log("sa");
-            UIManager.Instance.addPeopleButton.interactable = false;
-        }
         
         if (TotalMoney >= IncomeButtonMoney) //activate income button
         {
@@ -169,16 +176,18 @@ public class GameDataManager : MonoBehaviour
         {
             UIManager.Instance.speedButton.interactable = false;
         }
+
+        if (GameManager.Instance.addCircleShouldbeOpened)
+        {
+            if (TotalMoney >= AddCircleButtonMoney) //activate add circle button
+            {
+                UIManager.Instance.addCircleButton.interactable = true;
+            }
+            else
+            {
+                UIManager.Instance.addCircleButton.interactable = false;
+            }
+        }
         
-        /*
-        if (totalMoney >= addCircleButtonMoney) //activate add circle button
-        {
-            UIManager.Instance.addCircleButton.interactable = true;
-        }
-        else
-        {
-            UIManager.Instance.addCircleButton.interactable = false;
-        }
-        */
     }
 }

@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         circleCharacterArray.Add(circles1CharacterArray);
         circleCharacterArray.Add(circles2CharacterArray);
         DesignLevel();
+        GameDataManager.Instance.ControlButtons();
     }
 
     public void DesignLevel()
@@ -73,7 +74,6 @@ public class GameManager : MonoBehaviour
 
             //add cutter farmer
             Instantiate(circleCutterArray[0][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
-            Instantiate(farmCropArray[0], currentFarm.transform.GetChild(0).transform);
             indexToAddNext = 1;
         }
         else
@@ -99,13 +99,12 @@ public class GameManager : MonoBehaviour
 
                 //add cutter farmer
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
-
                 for (counter = 1; counter < howManyPeopleToAdd + 1; counter++)
                 {
 
                     GameObject tempFarmer = Instantiate(circleCharacterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(counter).transform);
                     farmerList.Add(tempFarmer);
-                    GameObject tempCrop = Instantiate(farmCropArray[circleCount], currentFarm.transform.GetChild(counter).transform);
+                    GameObject tempCrop = Instantiate(farmCropArray[circleCount], currentFarm.transform.GetChild(counter-1).transform);
 
                 }
 
@@ -119,21 +118,19 @@ public class GameManager : MonoBehaviour
             currentCircle = circleCount;
 
             indexToAddNext = counter;
-
-           
         }
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
         {
             
             
-            //UIManager.Instance.addPeopleButton.interactable = false;
+            UIManager.Instance.addPeopleButton.interactable = false;
             addFarmerShouldbeOpened = false;
             addCircleShouldbeOpened = true;
 
         }
         else
         {
-            //UIManager.Instance.addCircleButton.interactable = false;
+            UIManager.Instance.addCircleButton.interactable = false;
             addFarmerShouldbeOpened = true;
             addCircleShouldbeOpened = false;
             
@@ -208,7 +205,7 @@ public class GameManager : MonoBehaviour
             
             GameObject tempFarmer = Instantiate(circleCharacterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);
-            GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext).transform);
+            GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext-1).transform);
             //farm instantiate
             indexToAddNext++;
             GameDataManager.Instance.numberOfPeople++;
@@ -222,13 +219,19 @@ public class GameManager : MonoBehaviour
             {
                 if (currentCircle == 2)
                 {
+                    //close add people button
+                    addFarmerShouldbeOpened = false;
+                    UIManager.Instance.addPeopleButton.interactable = false;
+                    //open add circle button
                     addCircleShouldbeOpened = false;
-                    addFarmerShouldbeOpened= false;
+                    UIManager.Instance.addCircleButton.interactable = false;
                 }
                 //close add people button
                 addFarmerShouldbeOpened = false;
+                UIManager.Instance.addPeopleButton.interactable = false;
                 //open add circle button
                 addCircleShouldbeOpened = true;
+                UIManager.Instance.addCircleButton.interactable = true;
             }
         }
     }
@@ -243,12 +246,14 @@ public class GameManager : MonoBehaviour
         circleParentsList.Add(currentCircleObject);
         Instantiate(circleCutterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircleObject.transform.GetChild(0).transform);
         GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle]);
-        Instantiate(farmCropArray[currentCircle], currentFarm.transform.GetChild(0).transform);
         farmParentsList.Add(currentFarm);
         //close add people button
         addFarmerShouldbeOpened = true;
+        UIManager.Instance.addPeopleButton.interactable = true;
         //open add circle button
         addCircleShouldbeOpened = false;
+        UIManager.Instance.addCircleButton.interactable = false;
+        AddFarmer();
     }
 
     public void IncreaseAllFarmerLevels()

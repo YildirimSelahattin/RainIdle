@@ -403,7 +403,7 @@ MonoBehaviour:
   addCircleButtonLevel: 1
   incomeButtonLevel: 1
   incomeMultiplier: 1.1
-  totalMoney: 0
+  totalMoney: 10000
   addFarmerButtonMoney: 10
   speedButtonButtonMoney: 5
   addCircleButtonMoney: 10
@@ -422,7 +422,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234283010
 GameObject:
@@ -3096,9 +3096,9 @@ MonoBehaviour:
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   farmCropArray:
-  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
-  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
-  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
+  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
+  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
   numberOfGridsInCircle: 070000000d00000013000000
   numberOfGridsInFarm: 070000000d00000013000000
   totemParts:
@@ -3121,6 +3121,8 @@ MonoBehaviour:
   - 15.5
   - 19.5
   currentCircle: 0
+  addFarmerShouldbeOpened: 0
+  addCircleShouldbeOpened: 0
 --- !u!4 &1409541963
 Transform:
   m_ObjectHideFlags: 0
@@ -4246,7 +4248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 640332883426232667, guid: b7f77c285a55e244dbb032a2bee9b702, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 640332883426232667, guid: b7f77c285a55e244dbb032a2bee9b702, type: 3}
       propertyPath: m_LocalPosition.x

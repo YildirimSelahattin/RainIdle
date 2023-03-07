@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour
         speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
 
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
-        GameDataManager.Instance.ControlButtons();
     }
 
     public void OnSpeedUpgradeButton()

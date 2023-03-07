@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 4d196a5dfbbe9184f9c834f2974ce471
+guid: 13d089a76f37a584e82621be4c1bfd4c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: kahve2
-    second: {fileID: 2100000, guid: cff9346711aa84a43bef8c2c602cf1ec, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: tarla.001
-    second: {fileID: 2100000, guid: 94f498456fc4c1b478ba7e45d75b5490, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "totemetraf\u0131"
-    second: {fileID: 2100000, guid: 903adfd38cf79694badd221722b4f6bb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
