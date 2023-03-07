@@ -119,6 +119,7 @@ public class GameDataManager : MonoBehaviour
         TotalMoney -= totemUpgradeButtonMoney;
         totemUpgradeButtonLevel++;
         TotemUpgradeButtonMoney = (long)(TotemUpgradeButtonMoney * 1.1f);
+        UIManager.Instance.rainTime += 5;
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
 
@@ -126,7 +127,7 @@ public class GameDataManager : MonoBehaviour
 
     public void ControlButtons()
     {
-        if (totalMoney >= totemUpgradeButtonMoney) //activate totem button
+        if (TotalMoney >= TotemUpgradeButtonMoney) //activate totem button
         {
             UIManager.Instance.upgradeTotemButton.interactable = true;
         }
@@ -135,7 +136,7 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.upgradeTotemButton.interactable = false;
         }
         
-        if (totalMoney >= addFarmerButtonMoney) //activate add farmer button
+        if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
         {
             UIManager.Instance.addPeopleButton.interactable = true;
         }
@@ -144,7 +145,7 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.addPeopleButton.interactable = false;
         }
         
-        if (totalMoney >= incomeButtonMoney) //activate income button
+        if (TotalMoney >= IncomeButtonMoney) //activate income button
         {
             UIManager.Instance.incomeButton.interactable = true;
         }
@@ -153,7 +154,7 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.incomeButton.interactable = false;
         }
         
-        if (totalMoney >= speedButtonButtonMoney) //activate speed button
+        if (TotalMoney >= SpeedButtonButtonMoney) //activate speed button
         {
             UIManager.Instance.speedButton.interactable = true;
         }
