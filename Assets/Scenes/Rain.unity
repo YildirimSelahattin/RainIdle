@@ -403,7 +403,7 @@ MonoBehaviour:
   addCircleButtonLevel: 1
   incomeButtonLevel: 1
   incomeMultiplier: 1.1
-  totalMoney: 10
+  totalMoney: 9999999999
   addFarmerButtonMoney: 150
   speedButtonButtonMoney: 46
   addCircleButtonMoney: 1950
@@ -1047,6 +1047,8 @@ MonoBehaviour:
   rainButton: {fileID: 745053327}
   rainParticles: {fileID: 346954608}
   rainTime: 10
+  timeLeft: 0
+  isHold: 0
 --- !u!4 &437089795
 Transform:
   m_ObjectHideFlags: 0
@@ -3081,12 +3083,12 @@ MonoBehaviour:
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   circles1CutterCharacterArray:
   - {fileID: 0}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
-  - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
+  - {fileID: 7648307367168246373, guid: b5b938a25109dde4fb2c1523dedcbd7b, type: 3}
   circles2CutterCharacterArray:
   - {fileID: 0}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
@@ -3096,9 +3098,9 @@ MonoBehaviour:
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
   farmCropArray:
-  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
-  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
-  - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
+  - {fileID: 8813717673961541876, guid: 56fbdc5a03bea9445b307d3277693a6a, type: 3}
   numberOfGridsInCircle: 070000000d00000013000000
   numberOfGridsInFarm: 060000000c00000012000000
   totemParts:
