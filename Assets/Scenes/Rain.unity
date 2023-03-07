@@ -405,9 +405,9 @@ MonoBehaviour:
   incomeMultiplier: 1.1
   totalMoney: 0
   addFarmerButtonMoney: 10
-  speedButtonButtonMoney: 10
+  speedButtonButtonMoney: 5
   addCircleButtonMoney: 10
-  incomeButtonMoney: 10
+  incomeButtonMoney: 5
   totemUpgradeButtonMoney: 10
 --- !u!4 &223095938
 Transform:
