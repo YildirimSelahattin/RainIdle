@@ -837,6 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTime: 10
   currentCircle: 0
+  cropPrice: 20
 --- !u!136 &4161957955380514253
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -847,7 +848,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.253736
-  m_Height: 2.8369617
+  m_Radius: 0.29252672
+  m_Height: 3.2012868
   m_Direction: 1
-  m_Center: {x: -0.289639, y: -0.94102764, z: 0.4640969}
+  m_Center: {x: -0.289639, y: -1.1231902, z: 0.37059855}
