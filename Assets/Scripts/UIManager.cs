@@ -34,7 +34,6 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-
         totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + " $";
 
         upgradeTotemButtonLevel.text = "LEVEL " + GameDataManager.Instance.totemUpgradeButtonLevel;
@@ -55,8 +54,6 @@ public class UIManager : MonoBehaviour
 
     public void OnSpeedUpgradeButton()
     {
-        Debug.Log("Speed Money: " + GameDataManager.Instance.speedButtonButtonMoney);
-        Debug.Log("Total Money: " + GameDataManager.Instance.TotalMoney);
         
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {

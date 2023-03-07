@@ -129,14 +129,15 @@ public class GameManager : MonoBehaviour
         }
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
         {
-            UIManager.Instance.addCircleButton.interactable = true;
+            
+            
             UIManager.Instance.addPeopleButton.interactable = false;
 
         }
         else
         {
             UIManager.Instance.addCircleButton.interactable = false;
-            UIManager.Instance.addPeopleButton.interactable = true;
+  
         }
 
     }
@@ -205,7 +206,6 @@ public class GameManager : MonoBehaviour
     {
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
         {
-            GameDataManager.Instance.UpgradeAddFarmerMoney();
             
             GameObject tempFarmer = Instantiate(circleCharacterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);

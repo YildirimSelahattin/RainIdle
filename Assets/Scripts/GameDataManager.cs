@@ -26,7 +26,10 @@ public class GameDataManager : MonoBehaviour
         {
             totalMoney = value;
             if (UIManager.Instance != null)
+            {
                 ControlButtons();
+                Debug.Log("totalMoneyGetSet");
+            }
         }
     }
 
@@ -77,6 +80,7 @@ public class GameDataManager : MonoBehaviour
     public void UpgradeAddFarmerMoney()
     {
         TotalMoney -= AddFarmerButtonMoney;
+        Debug.Log(TotalMoney);
         addFarmerButtonLevel++;
         AddFarmerButtonMoney = (long)(AddFarmerButtonMoney * 1.5f);
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
@@ -138,10 +142,13 @@ public class GameDataManager : MonoBehaviour
         
         if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
         {
+            Debug.Log("totalMoney" + TotalMoney);
+            Debug.Log("AddFarmerButtonMoney" + AddFarmerButtonMoney);
             UIManager.Instance.addPeopleButton.interactable = true;
         }
         else
         {
+            Debug.Log("sa");
             UIManager.Instance.addPeopleButton.interactable = false;
         }
         
