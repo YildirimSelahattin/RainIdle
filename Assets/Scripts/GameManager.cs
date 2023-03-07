@@ -1,11 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
-using UnityEditor.U2D;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class GameManager : MonoBehaviour
 {
