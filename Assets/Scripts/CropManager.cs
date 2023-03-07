@@ -8,7 +8,7 @@ public class CropManager : MonoBehaviour
     public static CropManager Instance;
     public float growTime = 10f;
     public int currentCircle;
-    public int cropPrice = 20;
+    public float cropPrice = 20;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class CropManager : MonoBehaviour
             transform.DOKill();
             transform.DOLocalMoveY(1f, 0.2f).OnComplete(() => CropGrow());
 
-            GameDataManager.Instance.TotalMoney += cropPrice;
+            GameDataManager.Instance.TotalMoney += (long)cropPrice;
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
         }
     }
