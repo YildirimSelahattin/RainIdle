@@ -58,10 +58,10 @@ public class UIManager : MonoBehaviour
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
             
-            foreach (GameObject circle in GameManager.Instance.circleParentsList)
-            {
-                circle.GetComponent<RotateCircle>().planetSpeed *= 1.1f;
-            }
+            GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
+            GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
+            GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
+            
         }
     }
 
@@ -118,4 +118,16 @@ public class UIManager : MonoBehaviour
             circle.GetComponent<RotateCircle>().planetSpeed = tempSpeed;
         }
     }
+
+    /*
+    public void tapIncreaseSpeed()
+    {
+        
+    }
+
+    IEnumerator tapIncreaseSpeedDelay()
+    {
+        yield return new WaitForSeconds();
+    }
+    */
 }
