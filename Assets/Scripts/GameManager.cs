@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
     public int indexToAddNext;
     public float[] cameraSizeArray;
     public int currentCircle;
-
+    public bool addFarmerShouldbeOpened;
+    public bool addCircleShouldbeOpened;
     private void Awake()
     {
         if (Instance == null)
@@ -131,13 +132,17 @@ public class GameManager : MonoBehaviour
         {
             
             
-            UIManager.Instance.addPeopleButton.interactable = false;
+            //UIManager.Instance.addPeopleButton.interactable = false;
+            addFarmerShouldbeOpened = false;
+            addCircleShouldbeOpened = true;
 
         }
         else
         {
-            UIManager.Instance.addCircleButton.interactable = false;
-  
+            //UIManager.Instance.addCircleButton.interactable = false;
+            addFarmerShouldbeOpened = true;
+            addCircleShouldbeOpened = false;
+            
         }
 
     }
@@ -223,14 +228,13 @@ public class GameManager : MonoBehaviour
             {
                 if (currentCircle == 2)
                 {
-                    UIManager.Instance.addPeopleButton.interactable = false;
-                    //open add circle button
-                    UIManager.Instance.addCircleButton.interactable = false;
+                    addCircleShouldbeOpened = false;
+                    addFarmerShouldbeOpened= false;
                 }
                 //close add people button
-                UIManager.Instance.addPeopleButton.interactable = false;
+                addFarmerShouldbeOpened = false;
                 //open add circle button
-                UIManager.Instance.addCircleButton.interactable = true;
+                addCircleShouldbeOpened = true;
             }
         }
     }
@@ -248,9 +252,9 @@ public class GameManager : MonoBehaviour
         Instantiate(farmCropArray[currentCircle], currentFarm.transform.GetChild(0).transform);
         farmParentsList.Add(currentFarm);
         //close add people button
-        UIManager.Instance.addPeopleButton.interactable = true;
+        addFarmerShouldbeOpened = true;
         //open add circle button
-        UIManager.Instance.addCircleButton.interactable = false;
+        addCircleShouldbeOpened = false;
     }
 
     public void IncreaseAllFarmerLevels()
