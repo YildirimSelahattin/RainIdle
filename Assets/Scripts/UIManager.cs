@@ -9,12 +9,16 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public Button upgradeTotemButton;
     public TextMeshProUGUI upgradeTotemButtonPrice;
+    public TextMeshProUGUI upgradeTotemButtonLevel;
     public Button addPeopleButton;
     public TextMeshProUGUI addPeopleButtonPrice;
+    public TextMeshProUGUI addPeopleButtonLevel;
     public Button incomeButton;
     public TextMeshProUGUI incomeButtonPrice;
+    public TextMeshProUGUI incomeButtonLevel;
     public Button speedButton;
     public TextMeshProUGUI speedButtonPrice;
+    public TextMeshProUGUI speedButtonLevel;
     public Button addCircleButton;
     public TextMeshProUGUI addCircleButtonPrice;
     public Button rainButton;
@@ -27,12 +31,23 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
-        upgradeTotemButtonPrice.text = GameDataManager.Instance.totemUpgradeButtonMoney.ToString();
-        addPeopleButtonPrice.text = GameDataManager.Instance.addFarmerButtonMoney.ToString();
-        incomeButtonPrice.text = GameDataManager.Instance.incomeButtonMoney.ToString();
-        speedButtonPrice.text = GameDataManager.Instance.speedButtonButtonMoney.ToString();
-        addCircleButtonPrice.text = GameDataManager.Instance.addCircleButtonMoney.ToString();
+
+        totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + " $";
+
+        upgradeTotemButtonLevel.text = "LEVEL " + GameDataManager.Instance.totemUpgradeButtonLevel;
+        upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotemUpgradeButtonMoney) + " $";
+
+        addPeopleButtonLevel.text = "LEVEL " + GameDataManager.Instance.addFarmerButtonLevel;
+        addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddFarmerButtonMoney) + " $";
+
+        incomeButtonLevel.text = "LEVEL " + GameDataManager.Instance.incomeButtonLevel;
+        incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.IncomeButtonMoney) + " $";
+
+        speedButtonLevel.text = "LEVEL " + GameDataManager.Instance.speedButtonLevel;
+        speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
+
+        addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
+        GameDataManager.Instance.ControlButtons();
     }
 
     public void OnSpeedUpgradeButton()
@@ -52,20 +67,29 @@ public class UIManager : MonoBehaviour
 
     public void OnTotemUpgradeButton()
     {
-        if (GameDataManager.Instance.totemUpgradeButtonMoney < GameDataManager.Instance.TotalMoney)
+        if (GameDataManager.Instance.TotemUpgradeButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeTotemMoney();
-            
             GameManager.Instance.IncreaseAllFarmerLevels();
         }
     }
 
     public void OnIncomeButton()
     {
-        if (GameDataManager.Instance.incomeButtonMoney < GameDataManager.Instance.TotalMoney)
+        if (GameDataManager.Instance.IncomeButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeIncomeMoney();
         }
+    }
+
+    public void OnAddFarmerButton()
+    {
+        if (GameDataManager.Instance.addFarmerButtonMoney < GameDataManager.Instance.TotalMoney)
+        {
+            GameDataManager.Instance.UpgradeAddFarmerMoney();
+            GameManager.Instance.AddFarmer();
+        }
+       
     }
 
     public void OnRainButton()

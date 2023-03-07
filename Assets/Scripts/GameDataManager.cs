@@ -17,8 +17,8 @@ public class GameDataManager : MonoBehaviour
     public float incomeMultiplier = 1.1f;
     
     //Money
-    public float totalMoney;
-    public float TotalMoney
+    public long totalMoney = 0;
+    public long TotalMoney
     {
         get { return totalMoney; }
 
@@ -30,12 +30,37 @@ public class GameDataManager : MonoBehaviour
         }
     }
 
-    public float addFarmerButtonMoney = 10;
-    public float speedButtonButtonMoney = 10;
-    public float addCircleButtonMoney = 10;
-    public float incomeButtonMoney = 10;
-    public float totemUpgradeButtonMoney = 10;
-    
+    public long addFarmerButtonMoney = 10;
+    public long AddFarmerButtonMoney
+    {
+        get { return addFarmerButtonMoney; }
+        set { addFarmerButtonMoney = FormatNumbers.RoundNumberLikeText(value); }
+    }
+    public long speedButtonButtonMoney = 10;
+    public long SpeedButtonButtonMoney
+    {
+        get { return speedButtonButtonMoney; }
+        set { speedButtonButtonMoney = FormatNumbers.RoundNumberLikeText(value); }
+    }
+    public long addCircleButtonMoney = 10;
+    public long AddCircleButtonMoney
+    {
+        get { return addCircleButtonMoney; }
+        set { addCircleButtonMoney = FormatNumbers.RoundNumberLikeText(value); }
+    }
+
+    public long incomeButtonMoney = 10;
+    public long IncomeButtonMoney
+    {
+        get { return incomeButtonMoney; }
+        set { incomeButtonMoney = FormatNumbers.RoundNumberLikeText(value); }
+    }
+    public long totemUpgradeButtonMoney = 10;
+    public long TotemUpgradeButtonMoney
+    {
+        get { return totemUpgradeButtonMoney; }
+        set { totemUpgradeButtonMoney = FormatNumbers.RoundNumberLikeText(value); }
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -51,48 +76,52 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeAddFarmerMoney()
     {
-        TotalMoney -= addFarmerButtonMoney;
+        TotalMoney -= AddFarmerButtonMoney;
         addFarmerButtonLevel++;
-        addFarmerButtonMoney += addFarmerButtonMoney * incomeMultiplier;
-        UIManager.Instance.addPeopleButtonPrice.text = addFarmerButtonMoney.ToString();
-        UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
+        AddFarmerButtonMoney = (long)(AddFarmerButtonMoney * 1.1f);
+        UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        UIManager.Instance.addPeopleButtonLevel.text = addFarmerButtonLevel.ToString();
     }
     
     public void UpgradeSpeedMoney()
     {
-        TotalMoney -= speedButtonButtonMoney;
+        TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
-        speedButtonButtonMoney += speedButtonButtonMoney * incomeMultiplier;
-        UIManager.Instance.speedButtonPrice.text = speedButtonButtonMoney.ToString();
-        UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
+        SpeedButtonButtonMoney = (long)(speedButtonButtonMoney * 1.1f);
+        UIManager.Instance.speedButtonPrice.text = FormatNumbers.AbbreviateNumber(SpeedButtonButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        UIManager.Instance.speedButtonLevel.text = speedButtonLevel.ToString();
     }
     
     public void UpgradeAddCircleMoney()
     {
-        TotalMoney -= addCircleButtonMoney;
+        TotalMoney -= AddCircleButtonMoney;
         addCircleButtonLevel++;
-        addCircleButtonMoney += addCircleButtonMoney * incomeMultiplier;
-        UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
-        UIManager.Instance.addCircleButtonPrice.text = addCircleButtonMoney.ToString();
+        AddCircleButtonMoney = (long)(AddCircleButtonMoney * 1.1f);
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        UIManager.Instance.addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddCircleButtonMoney) + " $";//write button money
+
     }
     
     public void UpgradeIncomeMoney()
     {
-        CropManager.Instance.cropPrice += CropManager.Instance.cropPrice * 1.1f;
-        TotalMoney -= incomeButtonMoney;
-        incomeButtonLevel++;
-        incomeButtonMoney += incomeButtonMoney * incomeMultiplier;
-        UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
-        UIManager.Instance.incomeButtonPrice.text = incomeButtonMoney.ToString();
+        incomeMultiplier *= 1.1f;//increase income percentage
+        TotalMoney -= IncomeButtonMoney;//decrease total money 
+        incomeButtonLevel++;//increase button level
+        IncomeButtonMoney = (long)(IncomeButtonMoney * 1.1f);//increase button cost
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
+        UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
     }
     
     public void UpgradeTotemMoney()
     {
         TotalMoney -= totemUpgradeButtonMoney;
         totemUpgradeButtonLevel++;
-        totemUpgradeButtonMoney += totemUpgradeButtonMoney * incomeMultiplier;
-        UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
-        UIManager.Instance.upgradeTotemButtonPrice.text = totemUpgradeButtonMoney.ToString();
+        TotemUpgradeButtonMoney = (long)(TotemUpgradeButtonMoney * 1.1f);
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
+
     }
 
     public void ControlButtons()
