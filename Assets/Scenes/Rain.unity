@@ -3100,7 +3100,7 @@ MonoBehaviour:
   - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
   - {fileID: 3119993766893162498, guid: c19cc856dbd97e34cab225c555f0adc9, type: 3}
   numberOfGridsInCircle: 070000000d00000013000000
-  numberOfGridsInFarm: 070000000d00000013000000
+  numberOfGridsInFarm: 060000000c00000012000000
   totemParts:
   - {fileID: 0}
   - {fileID: 1766548828}
