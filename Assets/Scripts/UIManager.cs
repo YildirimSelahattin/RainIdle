@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public TextMeshProUGUI totalMoneyText;
     public Button upgradeTotemButton;
     public TextMeshProUGUI upgradeTotemButtonPrice;
     public Button addPeopleButton;
@@ -18,7 +20,8 @@ public class UIManager : MonoBehaviour
     public Button addCircleButton;
     public TextMeshProUGUI addCircleButtonPrice;
     public Button rainButton;
-    public TextMeshProUGUI totalMoneyText;
+    public GameObject rainParticles;
+    public float rainTime = 10;
     
     private void Awake()
     {
@@ -39,6 +42,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Speed Money: " + GameDataManager.Instance.speedButtonButtonMoney);
         Debug.Log("Total Money: " + GameDataManager.Instance.TotalMoney);
+        
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
@@ -70,6 +74,29 @@ public class UIManager : MonoBehaviour
 
     public void OnRainButton()
     {
+        StartCoroutine(RainTimeCounter(rainTime));
+    }
+
+    IEnumerator RainTimeCounter(float time)
+    {
+        float tempSpeed = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
         
+        foreach (GameObject circle in GameManager.Instance.circleParentsList)
+        {
+            circle.GetComponent<RotateCircle>().planetSpeed *= 2.5f;
+        }
+        
+        rainParticles.SetActive(true);
+        rainButton.interactable = false;
+        
+        yield return new WaitForSeconds(time);
+        rainButton.interactable = true;
+        rainParticles.SetActive(false);
+        
+        foreach (GameObject circle in GameManager.Instance.circleParentsList)
+        {
+            //Formulden yeniden hesapalayip verilmesi lazim button level'ina gore
+            circle.GetComponent<RotateCircle>().planetSpeed = tempSpeed;
+        }
     }
 }

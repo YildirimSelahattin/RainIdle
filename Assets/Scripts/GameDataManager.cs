@@ -91,6 +91,7 @@ public class GameDataManager : MonoBehaviour
         TotalMoney -= totemUpgradeButtonMoney;
         totemUpgradeButtonLevel++;
         totemUpgradeButtonMoney += totemUpgradeButtonMoney * incomeMultiplier;
+        UIManager.Instance.rainTime += 5;
         UIManager.Instance.totalMoneyText.text = totalMoney.ToString();
         UIManager.Instance.upgradeTotemButtonPrice.text = totemUpgradeButtonMoney.ToString();
     }
