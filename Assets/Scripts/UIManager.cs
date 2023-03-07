@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
 
     public void OnTotemUpgradeButton()
     {
-        if (GameDataManager.Instance.TotemUpgradeButtonMoney < GameDataManager.Instance.TotalMoney)
+        if (GameDataManager.Instance.TotemUpgradeButtonMoney <= GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeTotemMoney();
             GameManager.Instance.IncreaseAllFarmerLevels();
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour
 
     public void OnIncomeButton()
     {
-        if (GameDataManager.Instance.IncomeButtonMoney < GameDataManager.Instance.TotalMoney)
+        if (GameDataManager.Instance.IncomeButtonMoney <= GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeIncomeMoney();
         }
@@ -88,12 +88,11 @@ public class UIManager : MonoBehaviour
 
     public void OnAddFarmerButton()
     {
-        if (GameDataManager.Instance.addFarmerButtonMoney < GameDataManager.Instance.TotalMoney)
+        if (GameDataManager.Instance.AddFarmerButtonMoney <= GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeAddFarmerMoney();
             GameManager.Instance.AddFarmer();
         }
-       
     }
 
     public void OnRainButton()

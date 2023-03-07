@@ -78,7 +78,7 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= AddFarmerButtonMoney;
         addFarmerButtonLevel++;
-        AddFarmerButtonMoney = (long)(AddFarmerButtonMoney * 1.1f);
+        AddFarmerButtonMoney = (long)(AddFarmerButtonMoney * 1.5f);
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.addPeopleButtonLevel.text = addFarmerButtonLevel.ToString();
@@ -88,7 +88,7 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
-        SpeedButtonButtonMoney = (long)(speedButtonButtonMoney * 1.1f);
+        SpeedButtonButtonMoney = (long)(speedButtonButtonMoney * 1.5f);
         UIManager.Instance.speedButtonPrice.text = FormatNumbers.AbbreviateNumber(SpeedButtonButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.speedButtonLevel.text = speedButtonLevel.ToString();
@@ -98,7 +98,7 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= AddCircleButtonMoney;
         addCircleButtonLevel++;
-        AddCircleButtonMoney = (long)(AddCircleButtonMoney * 1.1f);
+        AddCircleButtonMoney = (long)(AddCircleButtonMoney * 1.5f);
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddCircleButtonMoney) + " $";//write button money
 
@@ -109,7 +109,7 @@ public class GameDataManager : MonoBehaviour
         incomeMultiplier *= 1.1f;//increase income percentage
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
-        IncomeButtonMoney = (long)(IncomeButtonMoney * 1.1f);//increase button cost
+        IncomeButtonMoney = (long)(IncomeButtonMoney * 1.5f);//increase button cost
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
     }
@@ -118,7 +118,7 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= totemUpgradeButtonMoney;
         totemUpgradeButtonLevel++;
-        TotemUpgradeButtonMoney = (long)(TotemUpgradeButtonMoney * 1.1f);
+        TotemUpgradeButtonMoney = (long)(TotemUpgradeButtonMoney * 1.5f);
         UIManager.Instance.rainTime += 5;
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
