@@ -134,7 +134,9 @@ public class UIManager : MonoBehaviour
         foreach (GameObject circle in GameManager.Instance.circleParentsList)
         {
             //Formulden yeniden hesapalayip verilmesi lazim button level'ina gore
-            circle.GetComponent<RotateCircle>().planetSpeed = tempSpeed;
+            GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
+            GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
+            GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
     }
 

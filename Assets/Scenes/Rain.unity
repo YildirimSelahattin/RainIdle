@@ -403,7 +403,8 @@ MonoBehaviour:
   addCircleButtonLevel: 1
   incomeButtonLevel: 1
   incomeMultiplier: 1.1
-  totalMoney: 10
+  cropPrices: 010000000500000019000000
+  totalMoney: 0
   addFarmerButtonMoney: 150
   speedButtonButtonMoney: 46
   addCircleButtonMoney: 1950
@@ -3067,12 +3068,12 @@ MonoBehaviour:
   - {fileID: 8813717673961541876, guid: 2aedcf4a57b34fe479f7db4491944b6a, type: 3}
   circles1ManArray:
   - {fileID: 0}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: 88b1f2e00a3ec6641aba46d6b86d3104, type: 3}
-  - {fileID: 8813717673961541876, guid: db8747268b3a91742a8586a8dfaae015, type: 3}
-  - {fileID: 8813717673961541876, guid: 2fb7582a9f164a345aa50858658d22d1, type: 3}
-  - {fileID: 8813717673961541876, guid: 43472fa3ebbb2154b9d090184926c1b0, type: 3}
-  - {fileID: 8813717673961541876, guid: 21569175816c58a489e58ee51b4ec14a, type: 3}
+  - {fileID: 8813717673961541876, guid: a356492db9a94dc4486f1b4b6cff977c, type: 3}
+  - {fileID: 8813717673961541876, guid: ebb3acd8f14f19a43a4f8dd1f02b57e0, type: 3}
+  - {fileID: 8813717673961541876, guid: 11f2c34ec6ea9c1409ac04911081ec5d, type: 3}
+  - {fileID: 8813717673961541876, guid: e7431bd5ae493004391d6b03bea34c28, type: 3}
+  - {fileID: 8813717673961541876, guid: ef10b9073425587419e7ea099274aab4, type: 3}
+  - {fileID: 8813717673961541876, guid: 861118aa09dfb4c45ac5c8321c8c007f, type: 3}
   circles1WomanArray:
   - {fileID: 0}
   - {fileID: 8813717673961541876, guid: 63c18f95cbcf21047a1310f9160429fd, type: 3}
@@ -3083,12 +3084,12 @@ MonoBehaviour:
   - {fileID: 8813717673961541876, guid: 2aedcf4a57b34fe479f7db4491944b6a, type: 3}
   circles2ManArray:
   - {fileID: 0}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: 88b1f2e00a3ec6641aba46d6b86d3104, type: 3}
-  - {fileID: 8813717673961541876, guid: db8747268b3a91742a8586a8dfaae015, type: 3}
-  - {fileID: 8813717673961541876, guid: 2fb7582a9f164a345aa50858658d22d1, type: 3}
-  - {fileID: 8813717673961541876, guid: 43472fa3ebbb2154b9d090184926c1b0, type: 3}
-  - {fileID: 8813717673961541876, guid: 21569175816c58a489e58ee51b4ec14a, type: 3}
+  - {fileID: 8813717673961541876, guid: e0f0c7a52f05cbc489c1adf3d9eec7c8, type: 3}
+  - {fileID: 8813717673961541876, guid: 243c42072d719224ebdd839f68396915, type: 3}
+  - {fileID: 8813717673961541876, guid: 5f9f6c9fab5444443b7bcd6330c302ae, type: 3}
+  - {fileID: 8813717673961541876, guid: a93783c719ee67c4fbc30cf114fccecf, type: 3}
+  - {fileID: 8813717673961541876, guid: 0a7193d1cf039234fa258ade5aea3b53, type: 3}
+  - {fileID: 8813717673961541876, guid: 10404a94f567a6b4f8211f591df2e67d, type: 3}
   circles2WomanArray:
   - {fileID: 0}
   - {fileID: 8813717673961541876, guid: 63c18f95cbcf21047a1310f9160429fd, type: 3}
