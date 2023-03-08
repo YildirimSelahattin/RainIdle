@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &3453743972848705838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -632,6 +635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &8782137703873497503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -747,6 +753,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &8413645547619339000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -945,6 +954,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &1706035486286567732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1392,6 +1404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &1258134824621785443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1673,6 +1688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &5406007355285210792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2204,6 +2222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCircle: 0
   cropPrice: 20
+  originalPos: {x: 0, y: 0, z: 0}
+  wantedPos: {x: 0, y: -1, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &3921201346353776249
 BoxCollider:
   m_ObjectHideFlags: 0

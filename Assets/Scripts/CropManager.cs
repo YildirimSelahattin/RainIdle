@@ -8,19 +8,27 @@ public class CropManager : MonoBehaviour
     public static CropManager Instance;
     public int currentCircle;
     public float cropPrice = 20;
-
+    public Vector3 originalPos;
+    public Vector3 wantedPos;
+    public Vector3 originalScale;
+    
     void Start()
     {
         if(Instance == null)
         {
             Instance = this;
         }
+
+        
+        originalPos = transform.localPosition;
+        originalScale = transform.localScale;
     }
 
     public void CropGrow()
     {
-        transform.DOLocalMoveY(9f, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
-        transform.DOScale(new Vector3(20,20,20), (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+        
+        transform.DOLocalMoveY(originalPos.y, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+        transform.DOScale(originalScale, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,8 +37,8 @@ public class CropManager : MonoBehaviour
         {
             Debug.Log("dasdasdasdasdasdasdd");
             transform.DOKill();
-            transform.DOLocalMoveY(-3f, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
-            transform.DOScale(new Vector3(1, 1, 1) , 0.2f);
+            transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
+            transform.DOScale(originalScale/20 , 0.2f);
 
             GameDataManager.Instance.TotalMoney += (long)cropPrice;
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
