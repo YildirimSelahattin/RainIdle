@@ -6,7 +6,6 @@ using DG.Tweening;
 public class CropManager : MonoBehaviour
 {
     public static CropManager Instance;
-    public float growTime = 10f;
     public int currentCircle;
     public float cropPrice = 20;
 
@@ -16,22 +15,22 @@ public class CropManager : MonoBehaviour
         {
             Instance = this;
         }
-        CropGrow();
     }
 
     public void CropGrow()
     {
-        transform.DOLocalMove(new Vector3(0, 2.5f, 0), (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed)));
-
+        transform.DOLocalMoveY(9f, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+        transform.DOScale(new Vector3(20,20,20), (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "Cutter1")
         {
+            Debug.Log("dasdasdasdasdasdasdd");
             transform.DOKill();
-            transform.DOLocalMoveY(1f, 0.2f).OnComplete(() => CropGrow());
+            transform.DOLocalMoveY(-3f, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
+            transform.DOScale(new Vector3(1, 1, 1) , 0.2f);
 
             GameDataManager.Instance.TotalMoney += (long)cropPrice;
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
