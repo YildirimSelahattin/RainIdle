@@ -73,7 +73,6 @@ public class UIManager : MonoBehaviour
 
     public void OnSpeedUpgradeButton()
     {
-        
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();

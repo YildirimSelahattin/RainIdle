@@ -177,11 +177,11 @@ public class GameManager : MonoBehaviour
         parentCircle.AddComponent<RotateCircle>();
         if (currentCircle % 2 == 0)
         {
-            parentCircle.GetComponent<RotateCircle>().planetSpeed = -10 * Mathf.Pow(1.1f, GameDataManager.Instance.speedButtonLevel);
+            parentCircle.GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
         else
         {
-            parentCircle.GetComponent<RotateCircle>().planetSpeed = 10;
+            parentCircle.GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
 
         for (int i = 0; i < numberOfObjects; i++)
