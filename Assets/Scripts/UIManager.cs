@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class UIManager : MonoBehaviour
     public Button rainButton;
     public GameObject rainParticles;
     public float rainTime = 10;
+    public float timeLeft = 3;
+    public bool isHold;
     
     private void Awake()
     {
@@ -49,6 +52,22 @@ public class UIManager : MonoBehaviour
         speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
 
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
+    }
+
+    private void Update()
+    {
+        if(timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+        }
+        
+        
+        if(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed < (10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
+            GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
+        if(GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed > -(10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
+            GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed += timeLeft * 2;
+        if(GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed < (10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
+            GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
     }
 
     public void OnSpeedUpgradeButton()
@@ -119,15 +138,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*
+    
     public void tapIncreaseSpeed()
     {
         
     }
 
-    IEnumerator tapIncreaseSpeedDelay()
+    IEnumerator DecreaseSpeed()
     {
-        yield return new WaitForSeconds();
+        yield return new WaitForSeconds(timeLeft);
+        
+        
     }
-    */
+    
 }
