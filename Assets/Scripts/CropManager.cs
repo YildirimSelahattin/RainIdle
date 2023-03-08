@@ -11,7 +11,7 @@ public class CropManager : MonoBehaviour
     public Vector3 originalPos;
     public Vector3 wantedPos;
     public Vector3 originalScale;
-    
+    public int cropIndex;
     void Start()
     {
         if(Instance == null)
@@ -40,7 +40,7 @@ public class CropManager : MonoBehaviour
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale/20 , 0.2f);
 
-            GameDataManager.Instance.TotalMoney += (long)cropPrice;
+            GameDataManager.Instance.TotalMoney += (long)GameDataManager.Instance.cropPrices[cropIndex];
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
             GameDataManager.Instance.ControlButtons();
         }
