@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ public class GameDataManager : MonoBehaviour
     public int addFarmerButtonLevel= 1;
     public int addCircleButtonLevel= 1;
     public int incomeButtonLevel= 1;
-    public float incomeMultiplier = 1.1f;
+    public float incomeMultiplier = 1f;
+    public int[] cropPrices;
     
     //Money
     public long totalMoney = 0;
@@ -114,14 +116,15 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeIncomeMoney()
     {
-        incomeMultiplier *= 1.1f;//increase income percentage
+        
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
-        
-        CropManager.Instance.cropPrice = CropManager.Instance.cropPrice * (incomeButtonLevel + (incomeButtonLevel * 0.1f));
-        
+        incomeMultiplier *= (incomeButtonLevel + (incomeButtonLevel * 0.1f));//increase income percentage
+        for (int i = 0;i<cropPrices.Length; i++)
+        {
+            cropPrices[i] = (int)(cropPrices[i] * incomeMultiplier);
+        }
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
-        
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         ControlButtons();
