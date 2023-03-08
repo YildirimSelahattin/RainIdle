@@ -27,11 +27,7 @@ public class GameDataManager : MonoBehaviour
         set
         {
             totalMoney = value;
-            if (UIManager.Instance != null)
-            {
-                ControlButtons();
-                Debug.Log("totalMoneyGetSet");
-            }
+            
         }
     }
 
@@ -82,29 +78,27 @@ public class GameDataManager : MonoBehaviour
     public void UpgradeAddFarmerMoney()
     {
         TotalMoney -= AddFarmerButtonMoney;
-        Debug.Log(TotalMoney);
         addFarmerButtonLevel++;
         
         AddFarmerButtonMoney = (long)(Mathf.Pow(1.5f, addFarmerButtonLevel) * 100);
         
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.addPeopleButtonLevel.text = addFarmerButtonLevel.ToString();
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        ControlButtons();
     }
-    
+
     public void UpgradeSpeedMoney()
     {
         TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
-        
-        
         SpeedButtonButtonMoney = (long)(Mathf.Pow(1.65f, speedButtonLevel) * 28);
-        
         UIManager.Instance.speedButtonPrice.text = FormatNumbers.AbbreviateNumber(SpeedButtonButtonMoney) + " $";//write button money
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.speedButtonLevel.text = speedButtonLevel.ToString();
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        ControlButtons();
     }
-    
+
     public void UpgradeAddCircleMoney()
     {
         TotalMoney -= AddCircleButtonMoney;
@@ -112,11 +106,12 @@ public class GameDataManager : MonoBehaviour
         
         AddCircleButtonMoney = (long)(Mathf.Pow(130, addCircleButtonLevel) * 15);
         
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddCircleButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+
 
     }
-    
+
     public void UpgradeIncomeMoney()
     {
         incomeMultiplier *= 1.1f;//increase income percentage
@@ -127,10 +122,11 @@ public class GameDataManager : MonoBehaviour
         
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
+        ControlButtons();
     }
-    
+
     public void UpgradeTotemMoney()
     {
         TotalMoney -= totemUpgradeButtonMoney;
@@ -139,8 +135,9 @@ public class GameDataManager : MonoBehaviour
         TotemUpgradeButtonMoney = (long)(Mathf.Pow(25, totemUpgradeButtonLevel) * 3);
         
         UIManager.Instance.rainTime += 5;
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        ControlButtons();
 
     }
 
@@ -157,18 +154,19 @@ public class GameDataManager : MonoBehaviour
                 UIManager.Instance.upgradeTotemButton.interactable = false;
             }
         }
-
         if (GameManager.Instance.addFarmerShouldbeOpened)
         {
+            Debug.Log("total" + TotalMoney);
+            Debug.Log("cost" + AddFarmerButtonMoney);
             if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
             {
-                Debug.Log("totalMoney" + TotalMoney);
-                Debug.Log("AddFarmerButtonMoney" + AddFarmerButtonMoney);
+                Debug.Log("ac" + TotalMoney);
+            
                 UIManager.Instance.addPeopleButton.interactable = true;
             }
             else
             {
-                Debug.Log("sa");
+                Debug.Log("kapa");
                 UIManager.Instance.addPeopleButton.interactable = false;
             }
         }

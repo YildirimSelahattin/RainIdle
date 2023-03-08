@@ -35,6 +35,7 @@ public class CropManager : MonoBehaviour
 
             GameDataManager.Instance.TotalMoney += (long)cropPrice;
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
+            GameDataManager.Instance.ControlButtons();
         }
     }
 }
