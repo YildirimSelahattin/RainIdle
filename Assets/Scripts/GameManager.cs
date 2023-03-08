@@ -7,11 +7,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public float[] circleRadiuses;
     public float[] farmRadiuses;
-    public List<GameObject[]> circleCharacterArray = new List<GameObject[]>();
+    public List<GameObject[]> circleManArray = new List<GameObject[]>();
+    public List<GameObject[]> circleWomanArray = new List<GameObject[]>();
     public List<GameObject[]> circleCutterArray = new List<GameObject[]>();
-    public GameObject[] circles0CharacterArray;
-    public GameObject[] circles1CharacterArray;
-    public GameObject[] circles2CharacterArray;
+    public GameObject[] circles0ManArray;
+    public GameObject[] circles0WomanArray;
+    public GameObject[] circles1ManArray;
+    public GameObject[] circles1WomanArray;
+    public GameObject[] circles2ManArray;
+    public GameObject[] circles2WomanArray;
     public GameObject[] circles0CutterCharacterArray;
     public GameObject[] circles1CutterCharacterArray;
     public GameObject[] circles2CutterCharacterArray;
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int[] numberOfGridsInFarm;
     public GameObject[] totemParts;
     public GameObject gridPrefab;
+    public GameObject[] farmGridPrefab;
     public GameObject CircleParentsParent;
     public GameObject farmParentsParent;
     public List<GameObject> circleParentsList;
@@ -44,9 +49,13 @@ public class GameManager : MonoBehaviour
         circleCutterArray.Add(circles1CutterCharacterArray);
         circleCutterArray.Add(circles1CutterCharacterArray);
 
-        circleCharacterArray.Add(circles0CharacterArray);
-        circleCharacterArray.Add(circles1CharacterArray);
-        circleCharacterArray.Add(circles2CharacterArray);
+        circleManArray.Add(circles0ManArray);
+        circleManArray.Add(circles1ManArray);
+        circleManArray.Add(circles2ManArray);
+
+        circleWomanArray.Add(circles0WomanArray);
+        circleWomanArray.Add(circles1WomanArray);
+        circleWomanArray.Add(circles2WomanArray);
         DesignLevel();
         GameDataManager.Instance.ControlButtons();
     }
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
         if(tempNumberOfPeople == 0)
         {
             GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[0], circleRadiuses[0]);
-            GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[0], farmRadiuses[0]);
+            GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[0], farmRadiuses[0],circleCount);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
 
@@ -93,7 +102,7 @@ public class GameManager : MonoBehaviour
                     howManyPeopleToAdd = numberOfGridsInCircle[circleCount];
                 }
                 GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount]);
-                GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount]);
+                GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount],circleCount);
                 circleParentsList.Add(currentCircle);
                 farmParentsList.Add(currentFarm);
 
@@ -101,11 +110,19 @@ public class GameManager : MonoBehaviour
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
                 for (counter = 1; counter < howManyPeopleToAdd + 1; counter++)
                 {
-
-                    GameObject tempFarmer = Instantiate(circleCharacterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(counter).transform);
+                    GameObject characterToAdd = null;
+                    if(counter % 2 == 0)
+                    {
+                        characterToAdd = circleManArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel];
+                    }
+                    else
+                    {
+                        characterToAdd = circleWomanArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel];
+                    }
+                    GameObject tempFarmer = Instantiate(characterToAdd, currentCircle.transform.GetChild(counter).transform);
                     farmerList.Add(tempFarmer);
+                    Destroy(currentFarm.transform.GetChild(counter - 1).transform.GetChild(0).gameObject);
                     GameObject tempCrop = Instantiate(farmCropArray[circleCount], currentFarm.transform.GetChild(counter-1).transform);
-
                 }
 
                 if (tempNumberOfPeople != 0)
@@ -180,7 +197,7 @@ public class GameManager : MonoBehaviour
         }
         return parentCircle;
     }
-    public GameObject CreateFarmGameData(int numberOfObjects, float radius)
+    public GameObject CreateFarmGameData(int numberOfObjects, float radius,int currentCircle)
     {
         GameObject temp = new GameObject();
         temp.name = "Farm";
@@ -194,7 +211,8 @@ public class GameManager : MonoBehaviour
             Vector3 pos = transform.position + new Vector3(x, 0, z);
             float angleDegrees = -angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-            Instantiate(gridPrefab, pos, rot, parentCircle.transform);
+            GameObject temp2 = Instantiate(gridPrefab, pos, rot, parentCircle.transform);
+            Instantiate(farmGridPrefab[currentCircle], temp2.transform);
         }
         return parentCircle;
     }
@@ -202,8 +220,20 @@ public class GameManager : MonoBehaviour
     {
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
         {
-            GameObject tempFarmer = Instantiate(circleCharacterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
+            GameObject characterToAdd = null;
+            if(indexToAddNext % 2 == 0)
+            {
+                characterToAdd = circleManArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel];
+                    
+            }
+            else
+            {
+                characterToAdd = circleWomanArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel];
+            }
+            GameObject tempFarmer = Instantiate(characterToAdd, circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);
+            //delete base and Instantiate base and farm part
+            Destroy(farmParentsList[currentCircle].transform.GetChild(indexToAddNext - 1).transform.GetChild(0).gameObject);
             GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext-1).transform);
             //farm instantiate
             indexToAddNext++;
@@ -244,7 +274,7 @@ public class GameManager : MonoBehaviour
         GameObject currentCircleObject = CreateCircleGameData(numberOfGridsInCircle[currentCircle], circleRadiuses[currentCircle]);
         circleParentsList.Add(currentCircleObject);
         Instantiate(circleCutterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircleObject.transform.GetChild(0).transform);
-        GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle]);
+        GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle], currentCircle);
         farmParentsList.Add(currentFarm);
         //close add people button
         addFarmerShouldbeOpened = true;
@@ -269,13 +299,22 @@ public class GameManager : MonoBehaviour
                 gridObject = circleParentsList[circleCounter].transform.GetChild(gridCounter).gameObject;
                 if(gridObject.transform.childCount !=0)
                 {
+                    GameObject characterToAdd = null;
+                    if (gridCounter % 2 == 0)
+                    {
+                        characterToAdd = circleManArray[circleCounter][GameDataManager.Instance.totemUpgradeButtonLevel];
+                    }
+                    else
+                    {
+                        characterToAdd = circleWomanArray[circleCounter][GameDataManager.Instance.totemUpgradeButtonLevel];
+                    }
                     Destroy(gridObject.transform.GetChild(0).gameObject);
-                    GameObject temp = Instantiate(circleCharacterArray[circleCounter][GameDataManager.Instance.totemUpgradeButtonLevel], gridObject.transform);
+                    GameObject temp = Instantiate(characterToAdd, gridObject.transform);
                     farmerList.Add(temp);
                 }
-                
             }
         }
+
         if(GameDataManager.Instance.totemUpgradeButtonLevel == 6)
         {
             UIManager.Instance.upgradeTotemButton.interactable = false;

@@ -3047,30 +3047,54 @@ MonoBehaviour:
   - 3.5
   - 6
   - 8.5
-  circles0CharacterArray:
+  circles0ManArray:
   - {fileID: 0}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  circles1CharacterArray:
+  - {fileID: 8813717673961541876, guid: 88b1f2e00a3ec6641aba46d6b86d3104, type: 3}
+  - {fileID: 8813717673961541876, guid: db8747268b3a91742a8586a8dfaae015, type: 3}
+  - {fileID: 8813717673961541876, guid: 2fb7582a9f164a345aa50858658d22d1, type: 3}
+  - {fileID: 8813717673961541876, guid: 43472fa3ebbb2154b9d090184926c1b0, type: 3}
+  - {fileID: 8813717673961541876, guid: 21569175816c58a489e58ee51b4ec14a, type: 3}
+  circles0WomanArray:
+  - {fileID: 0}
+  - {fileID: 8813717673961541876, guid: 63c18f95cbcf21047a1310f9160429fd, type: 3}
+  - {fileID: 8813717673961541876, guid: 70af92d5eea630641a3203357b4317a5, type: 3}
+  - {fileID: 8813717673961541876, guid: d39c5d6d820c1dc4994864f96812a450, type: 3}
+  - {fileID: 8813717673961541876, guid: 1bd9a7cbc5aa65d4e997a8129a04633f, type: 3}
+  - {fileID: 8813717673961541876, guid: 798fb858c43c94242a2529a3ed32950e, type: 3}
+  - {fileID: 8813717673961541876, guid: 2aedcf4a57b34fe479f7db4491944b6a, type: 3}
+  circles1ManArray:
   - {fileID: 0}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  circles2CharacterArray:
+  - {fileID: 8813717673961541876, guid: 88b1f2e00a3ec6641aba46d6b86d3104, type: 3}
+  - {fileID: 8813717673961541876, guid: db8747268b3a91742a8586a8dfaae015, type: 3}
+  - {fileID: 8813717673961541876, guid: 2fb7582a9f164a345aa50858658d22d1, type: 3}
+  - {fileID: 8813717673961541876, guid: 43472fa3ebbb2154b9d090184926c1b0, type: 3}
+  - {fileID: 8813717673961541876, guid: 21569175816c58a489e58ee51b4ec14a, type: 3}
+  circles1WomanArray:
+  - {fileID: 0}
+  - {fileID: 8813717673961541876, guid: 63c18f95cbcf21047a1310f9160429fd, type: 3}
+  - {fileID: 8813717673961541876, guid: 70af92d5eea630641a3203357b4317a5, type: 3}
+  - {fileID: 8813717673961541876, guid: d39c5d6d820c1dc4994864f96812a450, type: 3}
+  - {fileID: 8813717673961541876, guid: 1bd9a7cbc5aa65d4e997a8129a04633f, type: 3}
+  - {fileID: 8813717673961541876, guid: 798fb858c43c94242a2529a3ed32950e, type: 3}
+  - {fileID: 8813717673961541876, guid: 2aedcf4a57b34fe479f7db4491944b6a, type: 3}
+  circles2ManArray:
   - {fileID: 0}
   - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
-  - {fileID: 8813717673961541876, guid: df3f5c02942272d41b480e08057efca0, type: 3}
+  - {fileID: 8813717673961541876, guid: 88b1f2e00a3ec6641aba46d6b86d3104, type: 3}
+  - {fileID: 8813717673961541876, guid: db8747268b3a91742a8586a8dfaae015, type: 3}
+  - {fileID: 8813717673961541876, guid: 2fb7582a9f164a345aa50858658d22d1, type: 3}
+  - {fileID: 8813717673961541876, guid: 43472fa3ebbb2154b9d090184926c1b0, type: 3}
+  - {fileID: 8813717673961541876, guid: 21569175816c58a489e58ee51b4ec14a, type: 3}
+  circles2WomanArray:
+  - {fileID: 0}
+  - {fileID: 8813717673961541876, guid: 63c18f95cbcf21047a1310f9160429fd, type: 3}
+  - {fileID: 8813717673961541876, guid: 70af92d5eea630641a3203357b4317a5, type: 3}
+  - {fileID: 8813717673961541876, guid: d39c5d6d820c1dc4994864f96812a450, type: 3}
+  - {fileID: 8813717673961541876, guid: 1bd9a7cbc5aa65d4e997a8129a04633f, type: 3}
+  - {fileID: 8813717673961541876, guid: 798fb858c43c94242a2529a3ed32950e, type: 3}
+  - {fileID: 8813717673961541876, guid: 2aedcf4a57b34fe479f7db4491944b6a, type: 3}
   circles0CutterCharacterArray:
   - {fileID: 0}
   - {fileID: 7648307367168246373, guid: b946a1c654443464883323f774c0f983, type: 3}
@@ -3110,6 +3134,10 @@ MonoBehaviour:
   - {fileID: 2130279186}
   - {fileID: 1389949018}
   gridPrefab: {fileID: 5166804174155917163, guid: f447fd036083a6848874e5d73999f3b7, type: 3}
+  farmGridPrefab:
+  - {fileID: 6264353990425055913, guid: df03b963482c0b846992d9b3691a6c89, type: 3}
+  - {fileID: 6875897907446178128, guid: f703ef1cb525e8e458c21e60101f2c4e, type: 3}
+  - {fileID: 4015448120603928711, guid: 1b2c6f69bd103c6458fc37ba72b8dd23, type: 3}
   CircleParentsParent: {fileID: 1412437343}
   farmParentsParent: {fileID: 1105232267}
   circleParentsList: []
