@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
             GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext-1).transform);
             //farm instantiate
             indexToAddNext++;
-            GameDataManager.Instance.numberOfPeople++;
+            
 
             foreach (GameObject farmer in farmerList)
             {

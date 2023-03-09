@@ -20,7 +20,13 @@ public class GameDataManager : MonoBehaviour
     public int incomeButtonLevel= 1;
     public float incomeMultiplier = 1f;
     public int[] cropPrices;
-    
+
+    public AudioClip[] cropSounds;
+
+    public int playSound;
+    public int playMusic;
+    public int playVibrate;
+
     //Money
     public long totalMoney = 0;
     public long TotalMoney
@@ -72,7 +78,10 @@ public class GameDataManager : MonoBehaviour
             Instance = this;
         }
     }
+    public void SaveData()
+    {
 
+    }
     public void LoadData()
     {
         numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",6);
@@ -83,7 +92,8 @@ public class GameDataManager : MonoBehaviour
         TotalMoney -= AddFarmerButtonMoney;
         addFarmerButtonLevel++;
         AddFarmerButtonMoney = (long)(Mathf.Pow(1.5f, addFarmerButtonLevel) * 100);
-        
+        numberOfPeople++;
+        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString(); 
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
         UIManager.Instance.addPeopleButtonLevel.text = "LEVEL " + addFarmerButtonLevel.ToString();
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
@@ -158,7 +168,7 @@ public class GameDataManager : MonoBehaviour
         
         UIManager.Instance.rainTime += 5;
         //increase Income 
-        incomeMultiplier *= 2;//increase income percentage
+        incomeMultiplier *= 1.2f;//increase income percentage
        
         UIManager.Instance.incomeInfo.text = "%" + String.Format("{0:0.00}", (incomeMultiplier) * 100);
         for (int i = 0; i < cropPrices.Length; i++)
