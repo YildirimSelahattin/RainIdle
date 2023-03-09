@@ -40,7 +40,7 @@ public class CropManager : MonoBehaviour
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale/20 , 0.2f);
 
-            GameDataManager.Instance.TotalMoney += (long)GameDataManager.Instance.cropPrices[cropIndex];
+            GameDataManager.Instance.TotalMoney += (long)(GameDataManager.Instance.cropPrices[cropIndex] * GameDataManager.Instance.incomeMultiplier);
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
             GameDataManager.Instance.ControlButtons();
         }

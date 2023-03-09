@@ -103,10 +103,17 @@ public class GameDataManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.circleParentsList.Count; i++)
         {
-            GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= speedButtonLevel * 1.1f;
+            if(i%2 == 0)
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed -= speedButtonLevel;
+            }
+            else
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed += speedButtonLevel;
+            }
         }
         //ýnfo text
-        UIManager.Instance.speedInfo.text = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed.ToString();
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
     }
 
@@ -128,7 +135,8 @@ public class GameDataManager : MonoBehaviour
         
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
-        incomeMultiplier *= 1.1f;//increase income percentage
+        incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f))/10; //increase income percentage
+   
         for (int i = 0;i<cropPrices.Length; i++)
         {
             UIManager.Instance.cropMoneyInfoArray[i].text = (cropPrices[i]*incomeMultiplier).ToString() +" $";
@@ -155,16 +163,23 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.incomeInfo.text = "%" + String.Format("{0:0.00}", (incomeMultiplier) * 100);
         for (int i = 0; i < cropPrices.Length; i++)
         {
-            UIManager.Instance.cropMoneyInfoArray[i].text = (cropPrices[i]*incomeMultiplier).ToString() + " $";
+            //UIManager.Instance.cropMoneyInfoArray[i].text = FormatNumbers.RoundNumberLikeText((long)cropPrices[i]*incomeMultiplier).ToString()+ " $";
         }
 
-        for(int i = 0;i < GameManager.Instance.circleParentsList.Count; i++)
+        for (int i = 0; i < GameManager.Instance.circleParentsList.Count; i++)
         {
-            GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= speedButtonLevel*1.1f;
+            if (i % 2 == 0)
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed -= speedButtonLevel;
+            }
+            else
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed += speedButtonLevel;
+            }
         }
 
         //ýnfo text
-        UIManager.Instance.speedInfo.text = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed.ToString();
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
 
     }
