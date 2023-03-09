@@ -138,7 +138,6 @@ public class UIManager : MonoBehaviour
 
     IEnumerator RainTimeCounter(float time)
     {
-        
         rainParticles.SetActive(true);
         rainButton.interactable = false;
         rainMultiplier = 2f;
@@ -178,7 +177,7 @@ public class UIManager : MonoBehaviour
         if(tapIncreaseSpeedCounter < 5)
         {
             tapIncreaseSpeedCounter += 1;
-            tapSpeedMultiplier += 5f;
+            tapSpeedMultiplier += 1.1f;
             Debug.Log("Tap: " + tapSpeedMultiplier);
             StartCoroutine(DecreaseSpeed());
         }
