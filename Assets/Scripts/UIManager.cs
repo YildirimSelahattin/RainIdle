@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,6 +8,11 @@ using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
+
+    int isSoundOn;
+    int isMusicOn;
+    int isVibrateOn;
+
     public static UIManager Instance;
     public TextMeshProUGUI totalMoneyText;
     public Button upgradeTotemButton;
@@ -28,15 +32,25 @@ public class UIManager : MonoBehaviour
     public Button rainButton;
     public GameObject rainParticles;
     public float rainTime = 10;
-    public float remainingSpeedTime = 5;
-    public int tapIncreaseSpeedCounter = 0;
+    public float timeLeft = 3;
+    public bool isHold;
     public TextMeshProUGUI speedInfo;
     public TextMeshProUGUI incomeInfo;
+    public TextMeshProUGUI PeopleInfo;
     public TextMeshProUGUI[] cropMoneyInfoArray;
-    public float rainMultiplier = 1;
-    public float tapSpeedMultiplier = 1;
-    public bool speedButtonUp = false;
-    
+
+    [SerializeField] GameObject soundOn;
+    [SerializeField] GameObject soundOff;
+    [SerializeField] GameObject musicOn;
+    [SerializeField] GameObject musicOff;
+    [SerializeField] GameObject vibrationOff;
+    [SerializeField] GameObject vibrationOn;
+    [SerializeField] GameObject optionBar;
+    [SerializeField] GameObject gameMusic;
+    public Image rainDropImage;
+    public int fillTime;
+    public float fillCounter;
+    public bool shouldCount;
     private void Start()
     {
         if(Instance == null)
@@ -61,32 +75,32 @@ public class UIManager : MonoBehaviour
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
         speedInfo.text = (10 +(GameDataManager.Instance.speedButtonLevel) ).ToString();
         incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
+        PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString();
+        
     }
 
     private void Update()
     {
-        if(remainingSpeedTime > 1)
+        if(timeLeft > 0)
         {
-            remainingSpeedTime -= Time.deltaTime;
+            timeLeft -= Time.deltaTime;
         }
-        else
+        if (shouldCount == true)
         {
-            remainingSpeedTime = 1f;
-        }
-
-        if (speedButtonUp)
-        {
-            if (tapSpeedMultiplier > 1)
+            if (fillCounter < fillTime)
             {
-                tapSpeedMultiplier -= (Time.deltaTime/remainingSpeedTime) * 8;
-                Debug.Log(tapSpeedMultiplier);
+                fillCounter += Time.deltaTime;
+                FillRainButton();
             }
             else
             {
-                speedButtonUp = false;
+                fillCounter = fillTime;
+                shouldCount = false;
             }
         }
+       
 
+        
         /*
         if(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed < (10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
             GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
@@ -96,12 +110,17 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
             */
     }
-
+    public void FillRainButton()
+    {
+        rainDropImage.fillAmount = fillCounter / fillTime;
+    }
     public void OnSpeedUpgradeButton()
     {
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
+
+      
         }
     }
 
@@ -134,19 +153,17 @@ public class UIManager : MonoBehaviour
     public void OnRainButton()
     {
         StartCoroutine(RainTimeCounter(rainTime));
+        
     }
-
+    public IEnumerator StartFillingRainButton()
+    {
+        yield return new WaitForSeconds(3);
+        shouldCount = true;
+        fillCounter = 0;
+    }
     IEnumerator RainTimeCounter(float time)
     {
-        rainParticles.SetActive(true);
-        rainButton.interactable = false;
-        rainMultiplier = 2f;
-        yield return new WaitForSeconds(time);
-        rainButton.interactable = true;
-        rainParticles.SetActive(false);
-        rainMultiplier = 1f;
-        
-        /*
+
         float tempSpeed = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
         
         foreach (GameObject circle in GameManager.Instance.circleParentsList)
@@ -160,7 +177,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         rainButton.interactable = true;
         rainParticles.SetActive(false);
-        
+        StartCoroutine(StartFillingRainButton());
         foreach (GameObject circle in GameManager.Instance.circleParentsList)
         {
             //Formulden yeniden hesapalayip verilmesi lazim button level'ina gore
@@ -168,34 +185,148 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
             GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
-        */
     }
+
     
     public void tapIncreaseSpeed()
     {
-        StopAllCoroutines();
-        if(tapIncreaseSpeedCounter < 5)
-        {
-            tapIncreaseSpeedCounter += 1;
-            tapSpeedMultiplier += 1.1f;
-            Debug.Log("Tap: " + tapSpeedMultiplier);
-            StartCoroutine(DecreaseSpeed());
-        }
-        else
-        {
-            StartCoroutine(DecreaseSpeed());
-        }
+        
     }
 
     IEnumerator DecreaseSpeed()
     {
-        yield return new WaitForSeconds(3);
-        speedButtonUp = true;
-        tapIncreaseSpeedCounter = 0;
+        yield return new WaitForSeconds(timeLeft);
+        
+        
     }
     
-    /*
-     * Speed Upgrade'in bi max seviyesi olsun
-     */
+    public void UpdateSound()
+    {
+        isSoundOn = GameDataManager.Instance.playSound;
+        if (isSoundOn == 0)
+        {
+            soundOff.gameObject.SetActive(true);
+            SoundsOff();
+        }
+
+        if (isSoundOn == 1)
+        {
+            soundOn.gameObject.SetActive(true);
+            SoundsOn();
+        }
+    }
+
+    public void UpdateMusic()
+    {
+        isMusicOn = GameDataManager.Instance.playMusic;
+        if (isMusicOn == 0)
+        {
+            musicOff.gameObject.SetActive(true);
+            MusicOff();
+        }
+
+        if (isMusicOn == 1)
+        {
+            musicOn.gameObject.SetActive(true);
+            MusicOn();
+        }
+    }
+
+    public void UpdateVibrate()
+    {
+        isVibrateOn = GameDataManager.Instance.playVibrate;
+        if (isVibrateOn == 0)
+        {
+            vibrationOff.gameObject.SetActive(true);
+            VibrationOff();
+        }
+
+        if (isVibrateOn == 1)
+        {
+            vibrationOn.gameObject.SetActive(true);
+            VibrationOn();
+        }
+    }
+
+    public void MusicOff()
+    {
+        GameDataManager.Instance.playMusic = 0;
+        musicOn.gameObject.SetActive(false);
+        musicOff.gameObject.SetActive(true);
+        gameMusic.SetActive(false);
+        //UpdateMusic();
+
+    }
+
+    public void MusicOn()
+    {
+        GameDataManager.Instance.playMusic = 1;
+        musicOff.gameObject.SetActive(false);
+        musicOn.gameObject.SetActive(true);
+        gameMusic.SetActive(true);
+        //UpdateMusic();
+    }
+
+    public void SoundsOff()
+    {
+        GameDataManager.Instance.playSound = 0;
+        soundOn.gameObject.SetActive(false);
+        soundOff.gameObject.SetActive(true);
+        //UpdateSound();
+    }
+
+    public void SoundsOn()
+    {
+        GameDataManager.Instance.playSound = 1;
+        soundOff.gameObject.SetActive(false);
+        soundOn.gameObject.SetActive(true);
+        //UpdateSound();
+    }
+
+    public void VibrationOff()
+    {
+        GameDataManager.Instance.playVibrate = 0;
+        vibrationOn.gameObject.SetActive(false);
+        vibrationOff.gameObject.SetActive(true);
+        Handheld.Vibrate();
+        //UpdateVibrate();
+    }
+
+    public void VibrationOn()
+    {
+        GameDataManager.Instance.playVibrate = 1;
+        vibrationOff.gameObject.SetActive(false);
+        vibrationOn.gameObject.SetActive(true);
+        Handheld.Vibrate();
+       // UpdateVibrate();
+
+    }
+
+    public void VibratePhone(){
+        Handheld.Vibrate();
+    }
+    public void RetryLevel()
+    {
+        //LoadMainMenu.Instance.LoadSceneMenu(1);
+    }
+    public void NextLevel()
+    {
+        //GameDataManager.Instance.levelToLoad += 1;
+        //GameDataManager.Instance.SaveData();
+        //LoadMainMenu.Instance.LoadSceneMenu(1);
+
+    }
+
+    public void OpenCloseOptionBar()
+    {
+        if (optionBar.active)
+        {
+            optionBar.SetActive(false);
+        }
+        else
+        {
+            optionBar.SetActive(true);  
+        }
+    }
 
 }
