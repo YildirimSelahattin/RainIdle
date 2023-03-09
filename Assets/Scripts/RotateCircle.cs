@@ -6,17 +6,9 @@ using UnityEngine;
 public class RotateCircle : MonoBehaviour
 {
     public float planetSpeed = 2f;
-    private void Start()
-    {
-        //LoopRotate();
-    }
-    void FixedUpdate()
-    {
-        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime);
-    }
 
-    public void LoopRotate()
+    void Update()
     {
-        //transform.DOLocalRotate(new Vector3(0, 360, 0), 15*Time.deltaTime, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(()=>LoopRotate());
+        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier);
     }
 }

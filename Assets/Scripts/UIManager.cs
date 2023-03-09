@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -27,13 +28,14 @@ public class UIManager : MonoBehaviour
     public Button rainButton;
     public GameObject rainParticles;
     public float rainTime = 10;
-    public float timeLeft = 3;
-    public bool isHold;
+    public float remainingSpeedTime = 5;
+    public int tapIncreaseSpeedCounter = 0;
     public TextMeshProUGUI speedInfo;
     public TextMeshProUGUI incomeInfo;
     public TextMeshProUGUI[] cropMoneyInfoArray;
-    
-
+    public float rainMultiplier = 1;
+    public float tapSpeedMultiplier = 1;
+    public bool speedButtonUp = false;
     
     private void Start()
     {
@@ -63,11 +65,28 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(timeLeft > 0)
+        if(remainingSpeedTime > 1)
         {
-            timeLeft -= Time.deltaTime;
+            remainingSpeedTime -= Time.deltaTime;
         }
-        
+        else
+        {
+            remainingSpeedTime = 1f;
+        }
+
+        if (speedButtonUp)
+        {
+            if (tapSpeedMultiplier > 1)
+            {
+                tapSpeedMultiplier -= (Time.deltaTime/remainingSpeedTime) * 8;
+                Debug.Log(tapSpeedMultiplier);
+            }
+            else
+            {
+                speedButtonUp = false;
+            }
+        }
+
         /*
         if(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed < (10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
             GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
@@ -83,8 +102,6 @@ public class UIManager : MonoBehaviour
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
-
-      
         }
     }
 
@@ -121,6 +138,15 @@ public class UIManager : MonoBehaviour
 
     IEnumerator RainTimeCounter(float time)
     {
+        rainParticles.SetActive(true);
+        rainButton.interactable = false;
+        rainMultiplier = 2f;
+        yield return new WaitForSeconds(time);
+        rainButton.interactable = true;
+        rainParticles.SetActive(false);
+        rainMultiplier = 1f;
+        
+        /*
         float tempSpeed = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
         
         foreach (GameObject circle in GameManager.Instance.circleParentsList)
@@ -142,20 +168,34 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
             GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
+        */
     }
-
     
     public void tapIncreaseSpeed()
     {
-        
+        StopAllCoroutines();
+        if(tapIncreaseSpeedCounter < 5)
+        {
+            tapIncreaseSpeedCounter += 1;
+            tapSpeedMultiplier += 1.1f;
+            Debug.Log("Tap: " + tapSpeedMultiplier);
+            StartCoroutine(DecreaseSpeed());
+        }
+        else
+        {
+            StartCoroutine(DecreaseSpeed());
+        }
     }
 
     IEnumerator DecreaseSpeed()
     {
-        yield return new WaitForSeconds(timeLeft);
-        
-        
+        yield return new WaitForSeconds(3);
+        speedButtonUp = true;
+        tapIncreaseSpeedCounter = 0;
     }
     
+    /*
+     * Speed Upgrade'in bi max seviyesi olsun
+     */
 
 }
