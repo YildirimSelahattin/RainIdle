@@ -12,6 +12,7 @@ public class CropManager : MonoBehaviour
     public Vector3 wantedPos;
     public Vector3 originalScale;
     public int cropIndex;
+    public bool isSoundCrop;
     void Start()
     {
         if(Instance == null)
@@ -35,6 +36,12 @@ public class CropManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Cutter1")
         {
+            if (GameDataManager.Instance.playSound == 1 && isSoundCrop)
+            {
+                GameObject sound = new GameObject("sound");
+                sound.AddComponent<AudioSource>().PlayOneShot(GameDataManager.Instance.cropSounds[cropIndex]);
+                Destroy(sound, GameDataManager.Instance.cropSounds[cropIndex].length); // Creates new object, add to it audio source, play sound, destroy this object after playing is done
+            }
             Debug.Log("dasdasdasdasdasdasdd");
             transform.DOKill();
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
