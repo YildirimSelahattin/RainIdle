@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     public float rainTime = 10;
     public float timeLeft = 3;
     public bool isHold;
+    public float remainingSpeedTime = 5;
+    public int tapIncreaseSpeedCounter = 0;
     public TextMeshProUGUI speedInfo;
     public TextMeshProUGUI incomeInfo;
     public TextMeshProUGUI PeopleInfo;
@@ -47,10 +49,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject vibrationOn;
     [SerializeField] GameObject optionBar;
     [SerializeField] GameObject gameMusic;
+
+
     public Image rainDropImage;
     public int fillTime;
     public float fillCounter;
     public bool shouldCount;
+    public float rainMultiplier = 1;
+    public float tapSpeedMultiplier = 1;
+    public bool speedButtonUp = false;
     private void Start()
     {
         if(Instance == null)
@@ -84,6 +91,27 @@ public class UIManager : MonoBehaviour
         if(timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
+        }
+        if (remainingSpeedTime > 1)
+        {
+            remainingSpeedTime -= Time.deltaTime;
+        }
+        else
+        {
+            remainingSpeedTime = 1f;
+        }
+
+        if (speedButtonUp)
+        {
+            if (tapSpeedMultiplier > 1)
+            {
+                tapSpeedMultiplier -= (Time.deltaTime / remainingSpeedTime) * 8;
+                Debug.Log(tapSpeedMultiplier);
+            }
+            else
+            {
+                speedButtonUp = false;
+            }
         }
         if (shouldCount == true)
         {
@@ -153,53 +181,51 @@ public class UIManager : MonoBehaviour
     public void OnRainButton()
     {
         StartCoroutine(RainTimeCounter(rainTime));
-        
     }
+
+    IEnumerator RainTimeCounter(float time)
+    {
+        rainParticles.SetActive(true);
+        rainButton.interactable = false;
+        rainMultiplier = 2f;
+        yield return new WaitForSeconds(time);
+        rainButton.interactable = true;
+        rainParticles.SetActive(false);
+        rainMultiplier = 1f;
+    }
+
     public IEnumerator StartFillingRainButton()
     {
         yield return new WaitForSeconds(3);
         shouldCount = true;
         fillCounter = 0;
     }
-    IEnumerator RainTimeCounter(float time)
-    {
-
-        float tempSpeed = GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
-        
-        foreach (GameObject circle in GameManager.Instance.circleParentsList)
-        {
-            circle.GetComponent<RotateCircle>().planetSpeed *= 2.5f;
-        }
-        
-        rainParticles.SetActive(true);
-        rainButton.interactable = false;
-        
-        yield return new WaitForSeconds(time);
-        rainButton.interactable = true;
-        rainParticles.SetActive(false);
-        StartCoroutine(StartFillingRainButton());
-        foreach (GameObject circle in GameManager.Instance.circleParentsList)
-        {
-            //Formulden yeniden hesapalayip verilmesi lazim button level'ina gore
-            GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-            GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-            GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-        }
-    }
-
     
+
+
     public void tapIncreaseSpeed()
     {
-        
+        StopAllCoroutines();
+        if (tapIncreaseSpeedCounter < 5)
+        {
+            tapIncreaseSpeedCounter += 1;
+            tapSpeedMultiplier += 1.1f;
+            Debug.Log("Tap: " + tapSpeedMultiplier);
+            StartCoroutine(DecreaseSpeed());
+        }
+        else
+        {
+            StartCoroutine(DecreaseSpeed());
+        }
     }
 
     IEnumerator DecreaseSpeed()
     {
-        yield return new WaitForSeconds(timeLeft);
-        
-        
+        yield return new WaitForSeconds(3);
+        speedButtonUp = true;
+        tapIncreaseSpeedCounter = 0;
     }
-    
+
     public void UpdateSound()
     {
         isSoundOn = GameDataManager.Instance.playSound;

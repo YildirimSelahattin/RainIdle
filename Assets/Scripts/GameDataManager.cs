@@ -20,7 +20,7 @@ public class GameDataManager : MonoBehaviour
     public int incomeButtonLevel= 1;
     public float incomeMultiplier = 1f;
     public int[] cropPrices;
-
+    public float offlineProgressNum;
     public AudioClip[] cropSounds;
 
     public int playSound;
