@@ -128,9 +128,8 @@ public class GameManager : MonoBehaviour
                 if (tempNumberOfPeople != 0)
                 {
                     circleCount++;
-
                 }
-
+                UIManager.Instance.cropMoneyInfoArray[circleCount].gameObject.SetActive(true);
             }
             currentCircle = circleCount;
 

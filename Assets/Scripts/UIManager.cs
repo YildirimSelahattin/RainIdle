@@ -29,8 +29,13 @@ public class UIManager : MonoBehaviour
     public float rainTime = 10;
     public float timeLeft = 3;
     public bool isHold;
+    public TextMeshProUGUI speedInfo;
+    public TextMeshProUGUI incomeInfo;
+    public TextMeshProUGUI[] cropMoneyInfoArray;
     
-    private void Awake()
+
+    
+    private void Start()
     {
         if(Instance == null)
         {
@@ -52,6 +57,8 @@ public class UIManager : MonoBehaviour
         speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
 
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
+        speedInfo.text = (10 +(GameDataManager.Instance.speedButtonLevel) ).ToString();
+        incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
     }
 
     private void Update()
@@ -76,11 +83,8 @@ public class UIManager : MonoBehaviour
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
-            
-            GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-            GameManager.Instance.circleParentsList[1].GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-            GameManager.Instance.circleParentsList[2].GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
-            
+
+      
         }
     }
 
@@ -153,4 +157,5 @@ public class UIManager : MonoBehaviour
         
     }
     
+
 }

@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -81,11 +82,10 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= AddFarmerButtonMoney;
         addFarmerButtonLevel++;
-        
         AddFarmerButtonMoney = (long)(Mathf.Pow(1.5f, addFarmerButtonLevel) * 100);
         
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
-        UIManager.Instance.addPeopleButtonLevel.text = addFarmerButtonLevel.ToString();
+        UIManager.Instance.addPeopleButtonLevel.text = "LEVEL " + addFarmerButtonLevel.ToString();
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         ControlButtons();
     }
@@ -95,9 +95,25 @@ public class GameDataManager : MonoBehaviour
         TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
         SpeedButtonButtonMoney = (long)(Mathf.Pow(1.65f, speedButtonLevel) * 28);
+
         UIManager.Instance.speedButtonPrice.text = FormatNumbers.AbbreviateNumber(SpeedButtonButtonMoney) + " $";//write button money
-        UIManager.Instance.speedButtonLevel.text = speedButtonLevel.ToString();
+        UIManager.Instance.speedButtonLevel.text = "LEVEL " + speedButtonLevel.ToString();
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+
+
+        for (int i = 0; i < GameManager.Instance.circleParentsList.Count; i++)
+        {
+            if(i%2 == 0)
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = -(10 + speedButtonLevel);
+            }
+            else
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = 10 + speedButtonLevel;
+            }
+        }
+        //�nfo text
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
     }
 
@@ -119,14 +135,17 @@ public class GameDataManager : MonoBehaviour
         
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
-        incomeMultiplier *= (incomeButtonLevel + (incomeButtonLevel * 0.1f));//increase income percentage
+        incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f))/10; //increase income percentage
+   
         for (int i = 0;i<cropPrices.Length; i++)
         {
-            cropPrices[i] = (int)(cropPrices[i] * incomeMultiplier);
+            UIManager.Instance.cropMoneyInfoArray[i].text = (cropPrices[i]*incomeMultiplier).ToString() +" $";
         }
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
+        UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
+        UIManager.Instance.incomeButtonLevel.text = "LEVEL " + incomeButtonLevel.ToString();
         ControlButtons();
     }
 
@@ -138,8 +157,29 @@ public class GameDataManager : MonoBehaviour
         TotemUpgradeButtonMoney = (long)(Mathf.Pow(25, totemUpgradeButtonLevel) * 3);
         
         UIManager.Instance.rainTime += 5;
-        UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
-        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
+        //increase Income 
+        incomeMultiplier *= 2;//increase income percentage
+       
+        UIManager.Instance.incomeInfo.text = "%" + String.Format("{0:0.00}", (incomeMultiplier) * 100);
+        for (int i = 0; i < cropPrices.Length; i++)
+        {
+            //UIManager.Instance.cropMoneyInfoArray[i].text = FormatNumbers.RoundNumberLikeText((long)cropPrices[i]*incomeMultiplier).ToString()+ " $";
+        }
+
+        for (int i = 0; i < GameManager.Instance.circleParentsList.Count; i++)
+        {
+            if (i % 2 == 0)
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed -= speedButtonLevel;
+            }
+            else
+            {
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed += speedButtonLevel;
+            }
+        }
+
+        //�nfo text
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
 
     }
