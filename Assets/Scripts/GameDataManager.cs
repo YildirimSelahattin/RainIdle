@@ -199,17 +199,12 @@ public class GameDataManager : MonoBehaviour
         }
         if (GameManager.Instance.addFarmerShouldbeOpened)
         {
-            Debug.Log("total" + TotalMoney);
-            Debug.Log("cost" + AddFarmerButtonMoney);
             if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
             {
-                Debug.Log("ac" + TotalMoney);
-            
                 UIManager.Instance.addPeopleButton.interactable = true;
             }
             else
             {
-                Debug.Log("kapa");
                 UIManager.Instance.addPeopleButton.interactable = false;
             }
         }

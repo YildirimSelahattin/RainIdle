@@ -10,9 +10,9 @@ public class RotateCircle : MonoBehaviour
     {
         //LoopRotate();
     }
-    void FixedUpdate()
+    void Update()
     {
-        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier);
     }
 
     public void LoopRotate()

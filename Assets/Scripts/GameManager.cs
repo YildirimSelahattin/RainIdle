@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
         {
             while (tempNumberOfPeople != 0)
             {
-                Debug.Log(tempNumberOfPeople);
                 int howManyPeopleToAdd = 0;
                 if (numberOfGridsInCircle[circleCount] > tempNumberOfPeople)
                 {

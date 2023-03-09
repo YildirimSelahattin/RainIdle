@@ -12,6 +12,8 @@ public class CropManager : MonoBehaviour
     public Vector3 wantedPos;
     public Vector3 originalScale;
     public int cropIndex;
+    private float x = 0.007f;
+    
     void Start()
     {
         if(Instance == null)
@@ -26,16 +28,14 @@ public class CropManager : MonoBehaviour
 
     public void CropGrow()
     {
-        
-        transform.DOLocalMoveY(originalPos.y, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
-        transform.DOScale(originalScale, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+        transform.DOLocalMoveY(originalPos.y, 360 * x / (Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
+        transform.DOScale(originalScale, 360 * x / (Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Cutter1")
         {
-            Debug.Log("dasdasdasdasdasdasdd");
             transform.DOKill();
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale/20 , 0.2f);
