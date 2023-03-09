@@ -3,7 +3,42 @@ guid: fb24c5d032974904abadda94b17620ba
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _black.001
+    second: {fileID: 2100000, guid: 00772567b5756714cb6d957fc4f7af00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _brown3
+    second: {fileID: 2100000, guid: d82593cdf21b20745ad11cabe278cb34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _dark_red
+    second: {fileID: 2100000, guid: f8b3f85c7575ad245b373064333a9c96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _darkred
+    second: {fileID: 2100000, guid: 5a5e1276c44031749989712de9126307, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _green
+    second: {fileID: 2100000, guid: 5ea6b95b92d9c7647b3abf7648425383, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _skin_2
+    second: {fileID: 2100000, guid: 9640fd75e7aa13d4891617a7a10c19bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _white
+    second: {fileID: 2100000, guid: 582c53fca982e4e4fad801f027da19d8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
