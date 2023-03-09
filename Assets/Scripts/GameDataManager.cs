@@ -105,14 +105,14 @@ public class GameDataManager : MonoBehaviour
         {
             if(i%2 == 0)
             {
-                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed -= speedButtonLevel;
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = -(10 + speedButtonLevel);
             }
             else
             {
-                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed += speedButtonLevel;
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = 10 + speedButtonLevel;
             }
         }
-        //ýnfo text
+        //ï¿½nfo text
         UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
     }
@@ -178,7 +178,7 @@ public class GameDataManager : MonoBehaviour
             }
         }
 
-        //ýnfo text
+        //ï¿½nfo text
         UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
 
