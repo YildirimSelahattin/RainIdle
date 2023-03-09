@@ -103,6 +103,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &3453743972848705838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &566349300729484114
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +350,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &670404083416532293
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +467,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &1128351840425335664
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +584,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &1254606892869161288
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +701,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &1344442026908087914
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +805,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &8782137703873497503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -915,6 +922,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &8413645547619339000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1044,6 +1052,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &1841622364163953123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1156,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &1706035486286567732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1276,6 +1286,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &2297877732849620203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1403,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &2934466793350781733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1520,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &3308878150165280251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1637,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &3351160934387413911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1741,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &1258134824621785443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1856,6 +1871,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &3947517481295338964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +1988,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &4503097823160132341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2092,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &5406007355285210792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2204,6 +2222,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &4919340976363093867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2339,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &5302806094153708237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,6 +2456,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &6215399253038853690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,6 +2573,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &7297019313898858345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,6 +2761,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!65 &3921201346353776249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2928,6 +2951,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &8268532798642431680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3068,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &8842400671158049790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3185,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &9039409617047942170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,6 +3302,7 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}
 --- !u!1 &9156673382867783832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,3 +3419,4 @@ MonoBehaviour:
   wantedPos: {x: 0, y: -1, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   cropIndex: 0
+  floatingParent: {fileID: 2356464243763085121, guid: 193e6de0058d2a3489b9b813198ea8fe, type: 3}

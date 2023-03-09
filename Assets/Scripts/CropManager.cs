@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class CropManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CropManager : MonoBehaviour
     public Vector3 wantedPos;
     public Vector3 originalScale;
     public int cropIndex;
+    public GameObject floatingParent;
+
     void Start()
     {
         if(Instance == null)
@@ -41,6 +44,10 @@ public class CropManager : MonoBehaviour
             transform.DOScale(originalScale/20 , 0.2f);
 
             GameDataManager.Instance.TotalMoney += (long)GameDataManager.Instance.cropPrices[cropIndex];
+            GameObject prices = Instantiate(floatingParent, transform.position, Quaternion.Euler(60f, 0, 0)) as GameObject;
+            prices.transform.GetChild(0).GetComponent<TextMeshPro>().text = FormatNumbers.AbbreviateNumberForTotalMoney((long)GameDataManager.Instance.cropPrices[cropIndex]);
+            Debug.Log(FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + "aaa");
+            // Instantiate Floating Number
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
             GameDataManager.Instance.ControlButtons();
         }
