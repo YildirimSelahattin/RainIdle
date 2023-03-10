@@ -51,7 +51,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameVibrate;
     [SerializeField] GameObject rainMusic;
 
-
     public Image rainDropImage;
     public int fillTime;
     public float fillCounter;
@@ -115,9 +114,9 @@ public class UIManager : MonoBehaviour
     }
     public void WriteInfos()
     {
-        speedInfo.text = (10 + (GameDataManager.Instance.speedButtonLevel)).ToString();
-        incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
-        PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString();
+        speedInfo.text = (10 + (GameDataManager.Instance.speedButtonLevel)).ToString()+" m/s";
+        incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString()+" %" ;
+        PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString() + " people" ;
     }
     private void Update()
     {
@@ -157,6 +156,7 @@ public class UIManager : MonoBehaviour
                 fillCounter = fillTime;
                 shouldCount = false;
                 rainButton.interactable = true;
+                
                 FillRainButton();
             }
         }
@@ -213,6 +213,7 @@ public class UIManager : MonoBehaviour
 
     public void OnRainButton()
     {
+        rainButton.gameObject.AddComponent<ShakeButton>();
         StartCoroutine(RainTimeCounter(rainTime));
     }
 
@@ -229,10 +230,10 @@ public class UIManager : MonoBehaviour
         rainButton.interactable = false;
         fillCounter = 0;
         yield return new WaitForSeconds(time);
-        rainButton.interactable = true;
         rainParticles.SetActive(false);
         RotateCircle.rainMultiplier = 1f;
         rainMusic.SetActive(false);
+        Destroy(rainButton.gameObject.GetComponent<ShakeButton>());
         StartCoroutine(StartFillingRainButton());
     }
 

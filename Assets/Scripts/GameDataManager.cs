@@ -157,7 +157,7 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.addPeopleButtonPrice.text = "";
         }
         //INFO JOBS 
-        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString();
+        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString() + " people";
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.PeopleInfo.gameObject.transform);
         //BUTTON JOBS
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
@@ -197,7 +197,7 @@ public class GameDataManager : MonoBehaviour
             }
         }
         //INFO JOBS
-        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString() + " m/s";
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.speedInfo.gameObject.transform);
         ControlButtons();
         SaveData();
@@ -222,14 +222,13 @@ public class GameDataManager : MonoBehaviour
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
         incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f))/10; //increase income percentage
-   
         
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         UIManager.Instance.incomeButtonLevel.text = "LEVEL " + incomeButtonLevel.ToString();
         //INFO JOBS 
-        UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
+        UIManager.Instance.incomeInfo.text = "%" + (incomeMultiplier * 100).ToString();
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.incomeInfo.gameObject.transform);
         ControlButtons();
         SaveData();
@@ -272,7 +271,7 @@ public class GameDataManager : MonoBehaviour
         }
 
         //�nfo text
-        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
+        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString() + " m/s";
         ControlButtons();
         SaveData();
 
