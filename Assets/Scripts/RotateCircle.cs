@@ -6,9 +6,9 @@ using UnityEngine;
 public class RotateCircle : MonoBehaviour
 {
     public static RotateCircle Instance;
-    public float planetSpeed = 2f;
-    public float rainMultiplier = 1;
-    public float tapSpeedMultiplier = 1;
+    public  float planetSpeed = 2f;
+    public static float rainMultiplier = 1;
+    public static float tapSpeedMultiplier = 1;
 
     private void Awake()
     {

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         int tempNumberOfPeople = GameDataManager.Instance.numberOfPeople;
         int circleCount = 0;
         int counter = 0;
-
+        indexToAddNext = 1;
         if (GameDataManager.Instance.totemUpgradeButtonLevel == 6)
         {
             UIManager.Instance.upgradeTotemButton.interactable = false;
@@ -76,16 +76,24 @@ public class GameManager : MonoBehaviour
         {
             totemParts[i].SetActive(true);
         }
-        if(tempNumberOfPeople == 0)
+        if(tempNumberOfPeople == 1)
         {
             GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[0], circleRadiuses[0]);
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[0], farmRadiuses[0],circleCount);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
+            Debug.Log("hiko");
+            GameObject tempFarmer = Instantiate(circleManArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[circleCount].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
+            farmerList.Add(tempFarmer);
+            //delete base and Instantiate base and farm part
+            Destroy(farmParentsList[circleCount].transform.GetChild(indexToAddNext - 1).transform.GetChild(0).gameObject);
+            GameObject tempCrop = Instantiate(farmCropArray[circleCount], farmParentsList[circleCount].transform.GetChild(indexToAddNext - 1).transform);
+            //farm instantiate
+            indexToAddNext++;
 
             //add cutter farmer
             Instantiate(circleCutterArray[0][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
-            indexToAddNext = 1;
+            indexToAddNext = 2;
         }
         else
         {
@@ -241,13 +249,15 @@ public class GameManager : MonoBehaviour
         if (numberOfGridsInCircle[currentCircle] > indexToAddNext)
         {
             GameObject characterToAdd = null;
-            if(indexToAddNext % 2 == 0)
+            if(indexToAddNext % 2 == 1)
             {
+                Debug.Log("wom");
                 characterToAdd = circleManArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel];
                     
             }
             else
             {
+                Debug.Log("man");
                 characterToAdd = circleWomanArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel];
             }
             GameObject tempFarmer = Instantiate(characterToAdd, circleParentsList[currentCircle].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);

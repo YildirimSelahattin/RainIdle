@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfac4d825fc6988419a0f0ee5b22d938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPeople: 1
+  numberOfPeople: 18
   farmerSpeed: []
   speedButtonLevel: 1
   totemUpgradeButtonLevel: 1
@@ -882,7 +882,10 @@ MonoBehaviour:
   incomeMultiplier: 1
   cropPrices: 020000000400000006000000
   offlineProgressNum: 1
-  cropSounds: []
+  cropSounds:
+  - {fileID: 8300000, guid: fdf573dee0cb8f248b226c1fec28b51d, type: 3}
+  - {fileID: 8300000, guid: fdf573dee0cb8f248b226c1fec28b51d, type: 3}
+  - {fileID: 8300000, guid: fdf573dee0cb8f248b226c1fec28b51d, type: 3}
   cropAmount: 040000000400000002000000
   playSound: 0
   playMusic: 0
@@ -3681,7 +3684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.83137256}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

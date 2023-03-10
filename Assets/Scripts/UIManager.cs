@@ -73,8 +73,12 @@ public class UIManager : MonoBehaviour
             upgradeTotemButtonLevel.text = "MAX";
             upgradeTotemButtonPrice.text = "";
         }
-        upgradeTotemButtonLevel.text = "LEVEL " + GameDataManager.Instance.totemUpgradeButtonLevel;
-        upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotemUpgradeButtonMoney) + " $";
+        else
+        {
+            upgradeTotemButtonLevel.text = "LEVEL " + GameDataManager.Instance.totemUpgradeButtonLevel;
+            upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotemUpgradeButtonMoney) + " $";
+        }
+       
         if (GameDataManager.Instance.numberOfPeople == 36)
         {
             addPeopleButton.interactable = false;
@@ -132,9 +136,9 @@ public class UIManager : MonoBehaviour
 
         if (speedButtonUp)
         {
-            if (RotateCircle.Instance.tapSpeedMultiplier > 1)
+            if (RotateCircle.tapSpeedMultiplier > 1)
             {
-                RotateCircle.Instance.tapSpeedMultiplier -= (Time.deltaTime / remainingSpeedTime) * 8;
+                RotateCircle.tapSpeedMultiplier -= (Time.deltaTime / remainingSpeedTime) * 8;
             }
             else
             {
@@ -221,13 +225,13 @@ public class UIManager : MonoBehaviour
 
         rainParticles.SetActive(true);
         rainButton.interactable = false;
-        RotateCircle.Instance.rainMultiplier = 2f;
+        RotateCircle.rainMultiplier = 2f;
         rainButton.interactable = false;
         fillCounter = 0;
         yield return new WaitForSeconds(time);
         rainButton.interactable = true;
         rainParticles.SetActive(false);
-        RotateCircle.Instance.rainMultiplier = 1f;
+        RotateCircle.rainMultiplier = 1f;
         rainMusic.SetActive(false);
         StartCoroutine(StartFillingRainButton());
     }
@@ -246,8 +250,8 @@ public class UIManager : MonoBehaviour
         if (tapIncreaseSpeedCounter < 5)
         {
             tapIncreaseSpeedCounter += 1;
-            RotateCircle.Instance.tapSpeedMultiplier += 1.1f;
-            Debug.Log("Tap: " + RotateCircle.Instance.tapSpeedMultiplier);
+            RotateCircle.tapSpeedMultiplier += 1.1f;
+            Debug.Log("Tap: " + RotateCircle.tapSpeedMultiplier);
             StartCoroutine(DecreaseSpeed());
         }
         else

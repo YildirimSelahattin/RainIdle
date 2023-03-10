@@ -119,7 +119,7 @@ public class GameDataManager : MonoBehaviour
         playVibrate =  PlayerPrefs.GetInt("playVibrate", 1);
 
         //numberOfPeople
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",1);
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",18);
 
         //button levels
         totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
@@ -246,7 +246,9 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.upgradeTotemButtonPrice.text = "";
         }
         TotemUpgradeButtonMoney = (long)(Mathf.Pow(25, totemUpgradeButtonLevel) * 3);
-        
+        UIManager.Instance.upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(TotemUpgradeButtonMoney) + " $";//write button money
+        UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
+        UIManager.Instance.upgradeTotemButtonLevel.text = "LEVEL " + totemUpgradeButtonLevel.ToString();
         UIManager.Instance.rainTime += 5;
         //increase Income 
         incomeMultiplier *= 1.2f;//increase income percentage
