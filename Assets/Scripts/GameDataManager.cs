@@ -166,10 +166,7 @@ public class GameDataManager : MonoBehaviour
         incomeButtonLevel++;//increase button level
         incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f))/10; //increase income percentage
    
-        for (int i = 0;i<cropPrices.Length; i++)
-        {
-            UIManager.Instance.cropMoneyInfoArray[i].text = (cropPrices[i]*incomeMultiplier).ToString() +" $";
-        }
+        
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money

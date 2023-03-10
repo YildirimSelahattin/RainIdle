@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
                 //add cutter farmer
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
-                for (counter = 1; counter < howManyPeopleToAdd + 1; counter++)
+                for (counter = 1; counter < howManyPeopleToAdd ; counter++)
                 {
                     GameObject characterToAdd = null;
                     if(counter % 2 == 0)
@@ -128,12 +128,13 @@ public class GameManager : MonoBehaviour
                 {
                     circleCount++;
                 }
-                UIManager.Instance.cropMoneyInfoArray[circleCount].gameObject.SetActive(true);
             }
             currentCircle = circleCount;
 
             indexToAddNext = counter;
         }
+
+        Camera.main.orthographicSize = cameraSizeArray[currentCircle];
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
         {
             

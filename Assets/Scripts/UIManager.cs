@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI speedInfo;
     public TextMeshProUGUI incomeInfo;
     public TextMeshProUGUI PeopleInfo;
-    public TextMeshProUGUI[] cropMoneyInfoArray;
     public GameObject increaseParticleGameObject;
     [SerializeField] GameObject soundOn;
     [SerializeField] GameObject soundOff;

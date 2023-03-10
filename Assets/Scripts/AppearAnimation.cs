@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class AppearAnimation : MonoBehaviour
 {
+    public Vector3[] maxScaleArray;
+    
     // Start is called before the first frame update
     void Start()
     {
-        transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 1f).OnComplete(() =>
+        transform.DOScale(maxScaleArray[GameManager.Instance.currentCircle], 1f).OnComplete(() =>
         {
         });
     }

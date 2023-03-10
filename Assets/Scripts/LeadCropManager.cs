@@ -49,7 +49,7 @@ public class LeadCropManager : MonoBehaviour
             }
             GameDataManager.Instance.TotalMoney += (long)(GameDataManager.Instance.cropPrices[cropIndex] * GameDataManager.Instance.cropAmount[cropIndex]*GameDataManager.Instance.incomeMultiplier);
             GameObject prices = Instantiate(floatingParent, transform.position, Quaternion.Euler(60f, 0, 0)) as GameObject;
-            prices.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + FormatNumbers.AbbreviateNumber((long)GameDataManager.Instance.cropPrices[cropIndex] * GameDataManager.Instance.cropAmount[cropIndex]) + "$";
+            prices.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + FormatNumbers.AbbreviateNumber((long)(GameDataManager.Instance.cropPrices[cropIndex] * GameDataManager.Instance.cropAmount[cropIndex] * GameDataManager.Instance.incomeMultiplier)) + "$";
             // Instantiate Floating Number
             UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
             GameDataManager.Instance.ControlButtons();
