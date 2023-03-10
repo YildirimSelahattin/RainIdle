@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2356464243763085127}
-  - component: {fileID: 2356464243763085126}
   - component: {fileID: -4383828469857157064}
   m_Layer: 0
   m_Name: emirParticle
@@ -34,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
---- !u!114 &2356464243763085126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2356464243763085121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07e2110c0f060c40bd5d6c4be2051d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-4383828469857157064
 MonoBehaviour:
   m_ObjectHideFlags: 0
