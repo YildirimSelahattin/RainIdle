@@ -12,6 +12,7 @@ public class AppearAnimation : MonoBehaviour
     {
         transform.DOScale(maxScaleArray[GameManager.Instance.currentCircle], 1f).OnComplete(() =>
         {
+            Destroy(this);
         });
     }
 
