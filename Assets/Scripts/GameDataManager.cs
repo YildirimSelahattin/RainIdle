@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -79,14 +80,68 @@ public class GameDataManager : MonoBehaviour
         {
             Instance = this;
         }
+        LoadData();
     }
     public void SaveData()
     {
+        PlayerPrefs.SetInt("playSound", playSound);
+        PlayerPrefs.SetInt("playMusic", playMusic);
+        PlayerPrefs.SetInt("playVibrate", playVibrate);
 
+        //numberOfPeople
+        PlayerPrefs.SetInt("numberOfPeople", numberOfPeople);
+
+        //button levels
+        PlayerPrefs.SetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
+        PlayerPrefs.SetInt("addFarmerButtonLevel", addFarmerButtonLevel);
+        PlayerPrefs.SetInt("incomeButtonLevel", incomeButtonLevel);
+        PlayerPrefs.SetInt("speedButtonLevel", speedButtonLevel);
+        PlayerPrefs.SetInt("addCircleButtonLevel", addCircleButtonLevel);
+
+        //button prices
+        PlayerPrefs.SetString("totemUpgradeButtonMoney", TotemUpgradeButtonMoney.ToString());
+     
+        PlayerPrefs.SetString("addFarmerButtonMoney", AddFarmerButtonMoney.ToString());
+        
+        PlayerPrefs.SetString("incomeButtonMoney", IncomeButtonMoney.ToString());
+     
+        PlayerPrefs.SetString("speedButtonButtonMoney", SpeedButtonButtonMoney.ToString());
+     
+        PlayerPrefs.SetString("addCircleButtonMoney", AddCircleButtonMoney.ToString());
+        
+        //income multiplier;
+        PlayerPrefs.SetFloat("incomeMultiplier", incomeMultiplier);
     }
     public void LoadData()
     {
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",6);
+        playSound =  PlayerPrefs.GetInt("playSound", 1);
+        playMusic =  PlayerPrefs.GetInt("playMusic", 1);
+        playVibrate =  PlayerPrefs.GetInt("playVibrate", 1);
+
+        //numberOfPeople
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",1);
+
+        //button levels
+        totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
+        addFarmerButtonLevel = PlayerPrefs.GetInt("addFarmerButtonLevel", addFarmerButtonLevel);
+        incomeButtonLevel = PlayerPrefs.GetInt("incomeButtonLevel", incomeButtonLevel);
+        speedButtonLevel = PlayerPrefs.GetInt("speedButtonLevel", speedButtonLevel);
+        addCircleButtonLevel = PlayerPrefs.GetInt("addCircleButtonLevel", addCircleButtonLevel);
+
+        //button prices
+        string temp = PlayerPrefs.GetString("totemUpgradeButtonMoney", totemUpgradeButtonMoney.ToString());
+        TotemUpgradeButtonMoney = Convert.ToInt64(temp);
+        temp = PlayerPrefs.GetString("addFarmerButtonMoney", addFarmerButtonMoney.ToString());
+        AddFarmerButtonMoney = Convert.ToInt64(temp);
+        temp = PlayerPrefs.GetString("incomeButtonMoney", incomeButtonMoney.ToString());
+        IncomeButtonMoney = Convert.ToInt64(temp);
+        temp = PlayerPrefs.GetString("speedButtonButtonMoney", speedButtonButtonMoney.ToString());
+        SpeedButtonButtonMoney = Convert.ToInt64(temp);
+        temp = PlayerPrefs.GetString("addCircleButtonMoney", addCircleButtonMoney.ToString());
+        AddCircleButtonMoney = Convert.ToInt64(temp);
+        //income multiplier;
+        incomeMultiplier=PlayerPrefs.GetFloat("incomeMultiplier", incomeMultiplier);
+
     }
 
     public void UpgradeAddFarmerMoney()
@@ -109,6 +164,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.addPeopleButtonLevel.text = "LEVEL " + addFarmerButtonLevel.ToString();
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
         ControlButtons();
+        SaveData();
     }
 
     public void UpgradeSpeedMoney()
@@ -144,6 +200,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.speedInfo.gameObject.transform);
         ControlButtons();
+        SaveData();
     }
 
     public void UpgradeAddCircleMoney()
@@ -156,7 +213,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddCircleButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
 
-
+        SaveData();
     }
 
     public void UpgradeIncomeMoney()
@@ -175,6 +232,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.incomeInfo.gameObject.transform);
         ControlButtons();
+        SaveData();
     }
 
     public void UpgradeTotemMoney()
@@ -214,6 +272,7 @@ public class GameDataManager : MonoBehaviour
         //�nfo text
         UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         ControlButtons();
+        SaveData();
 
     }
 
