@@ -55,9 +55,8 @@ public class UIManager : MonoBehaviour
     public int fillTime;
     public float fillCounter;
     public bool shouldCount;
-    public float rainMultiplier = 1;
-    public float tapSpeedMultiplier = 1;
     public bool speedButtonUp = false;
+    
     private void Start()
     {
         if(Instance == null)
@@ -83,7 +82,6 @@ public class UIManager : MonoBehaviour
         speedInfo.text = (10 +(GameDataManager.Instance.speedButtonLevel) ).ToString();
         incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
         PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString();
-        
     }
 
     private void Update()
@@ -103,10 +101,9 @@ public class UIManager : MonoBehaviour
 
         if (speedButtonUp)
         {
-            if (tapSpeedMultiplier > 1)
+            if (RotateCircle.Instance.tapSpeedMultiplier > 1)
             {
-                tapSpeedMultiplier -= (Time.deltaTime / remainingSpeedTime) * 8;
-                Debug.Log(tapSpeedMultiplier);
+                RotateCircle.Instance.tapSpeedMultiplier -= (Time.deltaTime / remainingSpeedTime) * 8;
             }
             else
             {
@@ -142,6 +139,7 @@ public class UIManager : MonoBehaviour
     {
         rainDropImage.fillAmount = fillCounter / fillTime;
     }
+    
     public void OnSpeedUpgradeButton()
     {
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
@@ -187,11 +185,11 @@ public class UIManager : MonoBehaviour
     {
         rainParticles.SetActive(true);
         rainButton.interactable = false;
-        rainMultiplier = 2f;
+        RotateCircle.Instance.rainMultiplier = 2f;
         yield return new WaitForSeconds(time);
         rainButton.interactable = true;
         rainParticles.SetActive(false);
-        rainMultiplier = 1f;
+        RotateCircle.Instance.rainMultiplier = 1f;
     }
 
     public IEnumerator StartFillingRainButton()
@@ -209,8 +207,8 @@ public class UIManager : MonoBehaviour
         if (tapIncreaseSpeedCounter < 5)
         {
             tapIncreaseSpeedCounter += 1;
-            tapSpeedMultiplier += 1.1f;
-            Debug.Log("Tap: " + tapSpeedMultiplier);
+            RotateCircle.Instance.tapSpeedMultiplier += 1.1f;
+            Debug.Log("Tap: " + RotateCircle.Instance.tapSpeedMultiplier);
             StartCoroutine(DecreaseSpeed());
         }
         else

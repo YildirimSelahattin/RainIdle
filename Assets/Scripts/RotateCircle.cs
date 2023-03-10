@@ -5,10 +5,21 @@ using UnityEngine;
 
 public class RotateCircle : MonoBehaviour
 {
+    public static RotateCircle Instance;
     public float planetSpeed = 2f;
+    public float rainMultiplier = 1;
+    public float tapSpeedMultiplier = 1;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Update()
     {
-        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier);
+        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime);
     }
 }
