@@ -13,8 +13,7 @@ public class CropManager : MonoBehaviour
     public Vector3 wantedPos;
     public Vector3 originalScale;
     public int cropIndex;
-    public GameObject floatingParent;
-
+    private float x = 0.007f;
     void Start()
     {
         if(Instance == null)
@@ -29,9 +28,9 @@ public class CropManager : MonoBehaviour
 
     public void CropGrow()
     {
-        
-        transform.DOLocalMoveY(originalPos.y, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
-        transform.DOScale(originalScale, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+
+        transform.DOLocalMoveY(originalPos.y, 360 * x / (Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
+        transform.DOScale(originalScale, 360 * x / (Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * Time.deltaTime * UIManager.Instance.rainMultiplier * UIManager.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,13 +42,6 @@ public class CropManager : MonoBehaviour
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale/20 , 0.2f);
 
-            GameDataManager.Instance.TotalMoney += (long)GameDataManager.Instance.cropPrices[cropIndex];
-            GameObject prices = Instantiate(floatingParent, transform.position, Quaternion.Euler(60f, 0, 0)) as GameObject;
-            prices.transform.GetChild(0).GetComponent<TextMeshPro>().text = FormatNumbers.AbbreviateNumberForTotalMoney((long)GameDataManager.Instance.cropPrices[cropIndex]);
-            Debug.Log(FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + "aaa");
-            // Instantiate Floating Number
-            UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
-            GameDataManager.Instance.ControlButtons();
         }
     }
 }
