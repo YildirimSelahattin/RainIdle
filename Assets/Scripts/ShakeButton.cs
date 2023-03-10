@@ -19,6 +19,7 @@ public class ShakeButton : MonoBehaviour
 
     public IEnumerator ShakeLoop()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+        transform.parent.DOShakePosition(0.3f,25,2,0).OnComplete(()=>StartCoroutine(ShakeLoop()));
     }
 }
