@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI incomeInfo;
     public TextMeshProUGUI PeopleInfo;
     public TextMeshProUGUI[] cropMoneyInfoArray;
-
+    public GameObject increaseParticleGameObject;
     [SerializeField] GameObject soundOn;
     [SerializeField] GameObject soundOff;
     [SerializeField] GameObject musicOn;
@@ -66,19 +66,46 @@ public class UIManager : MonoBehaviour
 
         totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + " $";
 
+        if(GameDataManager.Instance.totemUpgradeButtonLevel == 6)
+        {
+            upgradeTotemButton.interactable = false;
+            upgradeTotemButtonLevel.text = "MAX";
+            upgradeTotemButtonPrice.text = "";
+        }
         upgradeTotemButtonLevel.text = "LEVEL " + GameDataManager.Instance.totemUpgradeButtonLevel;
         upgradeTotemButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotemUpgradeButtonMoney) + " $";
-
-        addPeopleButtonLevel.text = "LEVEL " + GameDataManager.Instance.addFarmerButtonLevel;
-        addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddFarmerButtonMoney) + " $";
+        if (GameDataManager.Instance.numberOfPeople == 36)
+        {
+            addPeopleButton.interactable = false;
+            addPeopleButtonLevel.text = "MAX";
+            addPeopleButtonPrice.text = "";
+        }
+        else
+        {
+            addPeopleButtonLevel.text = "LEVEL " + GameDataManager.Instance.addFarmerButtonLevel;
+            addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddFarmerButtonMoney) + " $";
+        }
+        
 
         incomeButtonLevel.text = "LEVEL " + GameDataManager.Instance.incomeButtonLevel;
         incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.IncomeButtonMoney) + " $";
 
-        speedButtonLevel.text = "LEVEL " + GameDataManager.Instance.speedButtonLevel;
-        speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
+        if (GameDataManager.Instance.speedButtonLevel == 30)
+        {
+            speedButton.interactable = false;
+            speedButtonLevel.text = "MAX";
+            speedButtonPrice.text = "";
+        }
+        
+        else
+        {
+            speedButtonLevel.text = "LEVEL " + GameDataManager.Instance.speedButtonLevel;
+            speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
+        }
+        
 
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
+
         speedInfo.text = (10 +(GameDataManager.Instance.speedButtonLevel) ).ToString();
         incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
         PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString();
@@ -145,8 +172,6 @@ public class UIManager : MonoBehaviour
         if (GameDataManager.Instance.speedButtonButtonMoney < GameDataManager.Instance.TotalMoney)
         {
             GameDataManager.Instance.UpgradeSpeedMoney();
-
-      
         }
     }
 

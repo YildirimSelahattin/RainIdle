@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -22,6 +23,7 @@ public class GameDataManager : MonoBehaviour
     public int[] cropPrices;
     public float offlineProgressNum;
     public AudioClip[] cropSounds;
+    public int[] cropAmount;
 
     public int playSound;
     public int playMusic;
@@ -75,6 +77,7 @@ public class GameDataManager : MonoBehaviour
     {
         if(Instance == null)
         {
+            Application.targetFrameRate = 30;
             Instance = this;
         }
     }
@@ -93,7 +96,16 @@ public class GameDataManager : MonoBehaviour
         addFarmerButtonLevel++;
         AddFarmerButtonMoney = (long)(Mathf.Pow(1.5f, addFarmerButtonLevel) * 100);
         numberOfPeople++;
-        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString(); 
+        if (numberOfPeople == 36)
+        {
+            UIManager.Instance.addPeopleButton.interactable = false;
+            UIManager.Instance.addPeopleButtonLevel.text = "MAX";
+            UIManager.Instance.addPeopleButtonPrice.text = "";
+        }
+        //INFO JOBS 
+        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString();
+        Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.PeopleInfo.gameObject.transform);
+        //BUTTON JOBS
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
         UIManager.Instance.addPeopleButtonLevel.text = "LEVEL " + addFarmerButtonLevel.ToString();
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
@@ -102,8 +114,15 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeSpeedMoney()
     {
+
         TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
+        if(speedButtonLevel == 30)
+        {
+            UIManager.Instance.speedButton.interactable = false;
+            UIManager.Instance.speedButtonLevel.text = "MAX";
+            UIManager.Instance.speedButtonPrice.text = "";
+        }
         SpeedButtonButtonMoney = (long)(Mathf.Pow(1.65f, speedButtonLevel) * 28);
 
         UIManager.Instance.speedButtonPrice.text = FormatNumbers.AbbreviateNumber(SpeedButtonButtonMoney) + " $";//write button money
@@ -122,8 +141,9 @@ public class GameDataManager : MonoBehaviour
                 GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = 10 + speedButtonLevel;
             }
         }
-        //�nfo text
+        //INFO JOBS
         UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
+        Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.speedInfo.gameObject.transform);
         ControlButtons();
     }
 
@@ -154,8 +174,10 @@ public class GameDataManager : MonoBehaviour
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
-        UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
         UIManager.Instance.incomeButtonLevel.text = "LEVEL " + incomeButtonLevel.ToString();
+        //INFO JOBS 
+        UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
+        Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.incomeInfo.gameObject.transform);
         ControlButtons();
     }
 
@@ -163,7 +185,12 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= totemUpgradeButtonMoney;
         totemUpgradeButtonLevel++;
-        
+        if (GameDataManager.Instance.totemUpgradeButtonLevel == 6)
+        {
+            UIManager.Instance.upgradeTotemButton.interactable = false;
+            UIManager.Instance.upgradeTotemButtonLevel.text = "MAX";
+            UIManager.Instance.upgradeTotemButtonPrice.text = "";
+        }
         TotemUpgradeButtonMoney = (long)(Mathf.Pow(25, totemUpgradeButtonLevel) * 3);
         
         UIManager.Instance.rainTime += 5;
@@ -207,7 +234,7 @@ public class GameDataManager : MonoBehaviour
                 UIManager.Instance.upgradeTotemButton.interactable = false;
             }
         }
-        if (GameManager.Instance.addFarmerShouldbeOpened)
+        if (GameManager.Instance.addFarmerShouldbeOpened && addFarmerButtonLevel !=36 )
         {
             if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
             {
@@ -228,16 +255,18 @@ public class GameDataManager : MonoBehaviour
         {
             UIManager.Instance.incomeButton.interactable = false;
         }
-        
-        if (TotalMoney >= SpeedButtonButtonMoney) //activate speed button
+        if(speedButtonLevel != 30)
         {
-            UIManager.Instance.speedButton.interactable = true;
-        }
-        else
-        {
-            UIManager.Instance.speedButton.interactable = false;
-        }
+            if (TotalMoney >= SpeedButtonButtonMoney) //activate speed button
+            {
+                UIManager.Instance.speedButton.interactable = true;
+            }
+            else
+            {
+                UIManager.Instance.speedButton.interactable = false;
+            }
 
+        }
         if (GameManager.Instance.addCircleShouldbeOpened)
         {
             if (TotalMoney >= AddCircleButtonMoney) //activate add circle button
