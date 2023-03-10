@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         circleWomanArray.Add(circles1WomanArray);
         circleWomanArray.Add(circles2WomanArray);
         DesignLevel();
+        
         GameDataManager.Instance.ControlButtons();
     }
 
@@ -90,14 +92,14 @@ public class GameManager : MonoBehaviour
             while (tempNumberOfPeople != 0)
             {
                 int howManyPeopleToAdd = 0;
-                if (numberOfGridsInCircle[circleCount] > tempNumberOfPeople)
+                if (numberOfGridsInCircle[circleCount]-1 > tempNumberOfPeople)
                 {
                     howManyPeopleToAdd = tempNumberOfPeople;
                     tempNumberOfPeople = 0;
                 }
                 else
                 {
-                    tempNumberOfPeople -= numberOfGridsInCircle[circleCount];
+                    tempNumberOfPeople -= numberOfGridsInCircle[circleCount]-1;
                     howManyPeopleToAdd = numberOfGridsInCircle[circleCount];
                 }
                 GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount]);
@@ -107,7 +109,7 @@ public class GameManager : MonoBehaviour
 
                 //add cutter farmer
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
-                for (counter = 1; counter < howManyPeopleToAdd ; counter++)
+                for (counter = 1; counter < howManyPeopleToAdd; counter++)
                 {
                     GameObject characterToAdd = null;
                     if(counter % 2 == 0)
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
             addCircleShouldbeOpened = false;
             
         }
-
+        AddTotemAndSpeedLevelEffects();
     }
     /*  public void OnClickCreateCircle(int numberOfObjects,float radius )
       {
@@ -166,7 +168,26 @@ public class GameManager : MonoBehaviour
               Instantiate(dancerPrefab, pos, rot, gameObject.transform);
           }
       }*/
+    public void AddTotemAndSpeedLevelEffects()
+    {
+        //speedlevel;
+        for (int i = 0; i < circleParentsList.Count; i++)
+        {
+            if (i % 2 == 0)
+            {
+               circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = -(10 + GameDataManager.Instance.speedButtonLevel + (GameDataManager.Instance.totemUpgradeButtonLevel-1));
+            }
+            else
+            {
+                circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = 10 + GameDataManager.Instance.speedButtonLevel+ (GameDataManager.Instance.totemUpgradeButtonLevel - 1);
+            }
+        }
 
+        //totem level effects
+        UIManager.Instance.rainTime += 5 * (GameDataManager.Instance.totemUpgradeButtonLevel - 1);
+        GameDataManager.Instance.incomeMultiplier *= Mathf.Pow(1.2f, GameDataManager.Instance.totemUpgradeButtonLevel - 1);
+        UIManager.Instance.WriteInfos();
+    }
     public GameObject CreateCircleGameData(int numberOfObjects, float radius)
     {
         GameObject temp = new GameObject();

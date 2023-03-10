@@ -107,11 +107,14 @@ public class UIManager : MonoBehaviour
 
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
 
-        speedInfo.text = (10 +(GameDataManager.Instance.speedButtonLevel) ).ToString();
+        
+    }
+    public void WriteInfos()
+    {
+        speedInfo.text = (10 + (GameDataManager.Instance.speedButtonLevel)).ToString();
         incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString();
         PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString();
     }
-
     private void Update()
     {
         if(timeLeft > 0)
