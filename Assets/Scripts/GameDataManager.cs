@@ -77,7 +77,6 @@ public class GameDataManager : MonoBehaviour
     {
         if(Instance == null)
         {
-            Application.targetFrameRate = 30;
             Instance = this;
         }
     }

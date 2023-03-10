@@ -41,14 +41,6 @@ public class CropManager : MonoBehaviour
             transform.DOKill();
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale/20 , 0.2f);
-
-            GameDataManager.Instance.TotalMoney += (long)GameDataManager.Instance.cropPrices[cropIndex];
-            GameObject prices = Instantiate(floatingParent, transform.position, Quaternion.Euler(60f, 0, 0)) as GameObject;
-            prices.transform.GetChild(0).GetComponent<TextMeshPro>().text = FormatNumbers.AbbreviateNumberForTotalMoney((long)GameDataManager.Instance.cropPrices[cropIndex]);
-            Debug.Log(FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney) + "aaa");
-            // Instantiate Floating Number
-            UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(GameDataManager.Instance.TotalMoney);
-            GameDataManager.Instance.ControlButtons();
         }
     }
 }
