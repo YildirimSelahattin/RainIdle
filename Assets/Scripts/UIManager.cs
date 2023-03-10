@@ -157,7 +157,6 @@ public class UIManager : MonoBehaviour
                 fillCounter = fillTime;
                 shouldCount = false;
                 rainButton.interactable = true;
-                
                 FillRainButton();
             }
         }
@@ -234,6 +233,7 @@ public class UIManager : MonoBehaviour
         rainParticles.SetActive(false);
         RotateCircle.rainMultiplier = 1f;
         rainMusic.SetActive(false);
+        rainDropImage.fillAmount = 0;
         Destroy(rainButton.gameObject.GetComponent<ShakeButton>());
         StartCoroutine(StartFillingRainButton());
     }
