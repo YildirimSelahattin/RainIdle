@@ -887,7 +887,7 @@ MonoBehaviour:
   playSound: 0
   playMusic: 0
   playVibrate: 0
-  totalMoney: 0
+  totalMoney: 200
   addFarmerButtonMoney: 150
   speedButtonButtonMoney: 46
   addCircleButtonMoney: 1950

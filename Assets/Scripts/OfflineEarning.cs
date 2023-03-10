@@ -58,6 +58,7 @@ public class OfflineEarning : MonoBehaviour
         GameDataManager.Instance.TotalMoney += (long)offlineRewardMoney;
         UIManager.Instance.totalMoneyText.GetComponent<TextMeshProUGUI>().text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotalMoney);
         OfflineRewardPanel.SetActive(false);
+        GameDataManager.Instance.ControlButtons();
     }
 
     public void OnOffine3MultipleReward()
@@ -65,5 +66,6 @@ public class OfflineEarning : MonoBehaviour
         GameDataManager.Instance.TotalMoney += (long)offlineRewardMoney * 3;
         UIManager.Instance.totalMoneyText.GetComponent<TextMeshProUGUI>().text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.TotalMoney);
         OfflineRewardPanel.SetActive(false);
+        GameDataManager.Instance.ControlButtons();
     }
 }

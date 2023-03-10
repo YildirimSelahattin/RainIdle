@@ -214,7 +214,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator RainTimeCounter(float time)
     {
-        if(isMusicOn == 1)
+        if(GameDataManager.Instance.playMusic == 1)
         {
             rainMusic.SetActive(true);
         }
