@@ -1,12 +1,5 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 public class GameDataManager : MonoBehaviour
 {
@@ -108,6 +101,10 @@ public class GameDataManager : MonoBehaviour
         PlayerPrefs.SetString("speedButtonButtonMoney", SpeedButtonButtonMoney.ToString());
 
         PlayerPrefs.SetString("addCircleButtonMoney", AddCircleButtonMoney.ToString());
+        
+        PlayerPrefs.SetString("TotalMoney", TotalMoney.ToString());
+
+        
 
         //income multiplier;
         PlayerPrefs.SetFloat("incomeMultiplier", incomeMultiplier);
@@ -119,7 +116,7 @@ public class GameDataManager : MonoBehaviour
         playVibrate = PlayerPrefs.GetInt("playVibrate", 1);
 
         //numberOfPeople
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 18);
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 1);
 
         //button levels
         totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
@@ -139,6 +136,10 @@ public class GameDataManager : MonoBehaviour
         SpeedButtonButtonMoney = Convert.ToInt64(temp);
         temp = PlayerPrefs.GetString("addCircleButtonMoney", addCircleButtonMoney.ToString());
         AddCircleButtonMoney = Convert.ToInt64(temp);
+
+        temp = PlayerPrefs.GetString("TotalMoney", 1.ToString());
+        TotalMoney = Convert.ToInt64(temp);
+        
         //income multiplier;
         incomeMultiplier = PlayerPrefs.GetFloat("incomeMultiplier", incomeMultiplier);
 
