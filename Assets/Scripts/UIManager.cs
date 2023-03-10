@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject vibrationOn;
     [SerializeField] GameObject optionBar;
     [SerializeField] GameObject gameMusic;
+    [SerializeField] GameObject gameVibrate;
+    [SerializeField] GameObject rainMusic;
 
 
     public Image rainDropImage;
@@ -147,6 +149,8 @@ public class UIManager : MonoBehaviour
             {
                 fillCounter = fillTime;
                 shouldCount = false;
+                rainButton.interactable = true;
+                FillRainButton();
             }
         }
        
@@ -207,20 +211,28 @@ public class UIManager : MonoBehaviour
 
     IEnumerator RainTimeCounter(float time)
     {
+        if(isMusicOn == 1)
+        {
+            rainMusic.SetActive(true);
+        }
+
         rainParticles.SetActive(true);
         rainButton.interactable = false;
         RotateCircle.Instance.rainMultiplier = 2f;
+        rainButton.interactable = false;
+        fillCounter = 0;
         yield return new WaitForSeconds(time);
         rainButton.interactable = true;
         rainParticles.SetActive(false);
         RotateCircle.Instance.rainMultiplier = 1f;
+        rainMusic.SetActive(false);
+        StartCoroutine(StartFillingRainButton());
     }
 
     public IEnumerator StartFillingRainButton()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(15);
         shouldCount = true;
-        fillCounter = 0;
     }
     
 

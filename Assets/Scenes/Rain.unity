@@ -1321,7 +1321,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1599,6 +1599,8 @@ MonoBehaviour:
   vibrationOn: {fileID: 244145626}
   optionBar: {fileID: 1242698156}
   gameMusic: {fileID: 641240058}
+  gameVibrate: {fileID: 212737007}
+  rainMusic: {fileID: 356208311}
   rainDropImage: {fileID: 1399039652}
   fillTime: 10
   fillCounter: 0
@@ -2589,8 +2591,8 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1399039655}
   - {fileID: 1896998673}
+  - {fileID: 1399039655}
   - {fileID: 1675864347}
   m_Father: {fileID: 224602496}
   m_RootOrder: 5
@@ -3982,7 +3984,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 745053326}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5945,7 +5947,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 745053326}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
