@@ -29,9 +29,8 @@ public class CropManager : MonoBehaviour
 
     public void CropGrow()
     {
-        
-        transform.DOLocalMoveY(originalPos.y, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
-        transform.DOScale(originalScale, (360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed))).SetEase(Ease.Linear);
+        transform.DOLocalMoveY(originalPos.y, (0.8f * 360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * RotateCircle.Instance.rainMultiplier * RotateCircle.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
+        transform.DOScale(originalScale, (0.8f * 360 / Mathf.Abs(GameManager.Instance.circleParentsList[currentCircle].GetComponent<RotateCircle>().planetSpeed * RotateCircle.Instance.rainMultiplier * RotateCircle.Instance.tapSpeedMultiplier))).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)

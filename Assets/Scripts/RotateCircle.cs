@@ -20,6 +20,6 @@ public class RotateCircle : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * rainMultiplier * tapSpeedMultiplier);
     }
 }
