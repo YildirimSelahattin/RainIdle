@@ -294,18 +294,10 @@ public class GameDataManager : MonoBehaviour
             if (TotalMoney >= TotemUpgradeButtonMoney) //activate totem button
             {
                 UIManager.Instance.upgradeTotemButton.interactable = true;
-
-                Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
-                tempColor.a = 1f;
-                UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.upgradeTotemButton.interactable = false;
-
-                Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
-                tempColor.a = 0.5f;
-                UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
             }
         }
 
@@ -314,36 +306,20 @@ public class GameDataManager : MonoBehaviour
             if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
             {
                 UIManager.Instance.addPeopleButton.interactable = true;
-
-                Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
-                tempColor.a = 1f;
-                UIManager.Instance.addPeopleButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.addPeopleButton.interactable = false;
-
-                Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
-                tempColor.a = 0.5f;
-                UIManager.Instance.addPeopleButtonLevel.color = tempColor;
             }
         }
 
         if (TotalMoney >= IncomeButtonMoney) //activate income button
         {
             UIManager.Instance.incomeButton.interactable = true;
-
-            Color tempColor = UIManager.Instance.incomeButtonLevel.color;
-            tempColor.a = 1f;
-            UIManager.Instance.incomeButtonLevel.color = tempColor;
         }
         else
         {
             UIManager.Instance.incomeButton.interactable = false;
-
-            Color tempColor = UIManager.Instance.incomeButtonLevel.color;
-            tempColor.a = 0.5f;
-            UIManager.Instance.incomeButtonLevel.color = tempColor;
         }
 
         if (speedButtonLevel != 30)
@@ -351,18 +327,10 @@ public class GameDataManager : MonoBehaviour
             if (TotalMoney >= SpeedButtonButtonMoney) //activate speed button
             {
                 UIManager.Instance.speedButton.interactable = true;
-
-                Color tempColor = UIManager.Instance.speedButtonLevel.color;
-                tempColor.a = 1f;
-                UIManager.Instance.speedButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.speedButton.interactable = false;
-
-                Color tempColor = UIManager.Instance.speedButtonLevel.color;
-                tempColor.a = 0.5f;
-                UIManager.Instance.speedButtonLevel.color = tempColor;
             }
         }
 
@@ -371,7 +339,6 @@ public class GameDataManager : MonoBehaviour
             if (TotalMoney >= AddCircleButtonMoney) //activate add circle button
             {
                 UIManager.Instance.addCircleButton.interactable = true;
-
             }
             else
             {

@@ -70,9 +70,7 @@ public class UIManager : MonoBehaviour
         {
             upgradeTotemButton.interactable = false;
             upgradeTotemButtonLevel.text = "MAX";
-            Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
-            tempColor.a = 0.5f;
-            UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
+
             upgradeTotemButtonPrice.text = "";
         }
         else
@@ -85,9 +83,7 @@ public class UIManager : MonoBehaviour
         {
             addPeopleButton.interactable = false;
             addPeopleButtonLevel.text = "MAX";
-            Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
-            tempColor.a = 0.5f;
-            UIManager.Instance.addPeopleButtonLevel.color = tempColor;
+
             addPeopleButtonPrice.text = "";
         }
         else
@@ -104,9 +100,7 @@ public class UIManager : MonoBehaviour
         {
             speedButton.interactable = false;
             speedButtonLevel.text = "MAX";
-            Color tempColor = UIManager.Instance.speedButtonLevel.color;
-            tempColor.a = 0.5f;
-            UIManager.Instance.speedButtonLevel.color = tempColor;
+
             speedButtonPrice.text = "";
         }
         
@@ -115,11 +109,8 @@ public class UIManager : MonoBehaviour
             speedButtonLevel.text = "LEVEL " + GameDataManager.Instance.speedButtonLevel;
             speedButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.SpeedButtonButtonMoney) + " $";
         }
-        
-
         addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(GameDataManager.Instance.AddCircleButtonMoney) + " $";
-
-        
+    
     }
     public void WriteInfos()
     {
