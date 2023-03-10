@@ -146,20 +146,22 @@ public class GameManager : MonoBehaviour
 
         Camera.main.orthographicSize = cameraSizeArray[currentCircle];
         if (indexToAddNext == numberOfGridsInCircle[currentCircle])
-        {
-            
-            
+        {           
             UIManager.Instance.addPeopleButton.interactable = false;
             addFarmerShouldbeOpened = false;
             addCircleShouldbeOpened = true;
-
+            Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.addPeopleButtonLevel.color = tempColor;
         }
         else
         {
             UIManager.Instance.addCircleButton.interactable = false;
             addFarmerShouldbeOpened = true;
             addCircleShouldbeOpened = false;
-            
+            Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.addPeopleButtonLevel.color = tempColor;
         }
         AddTotemAndSpeedLevelEffects();
     }

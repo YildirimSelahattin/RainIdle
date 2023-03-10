@@ -12,14 +12,14 @@ public class GameDataManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static GameDataManager Instance;
-    
+
     public int numberOfPeople;
     public float[] farmerSpeed;
     public int speedButtonLevel = 1;
-    public int totemUpgradeButtonLevel= 1;
-    public int addFarmerButtonLevel= 1;
-    public int addCircleButtonLevel= 1;
-    public int incomeButtonLevel= 1;
+    public int totemUpgradeButtonLevel = 1;
+    public int addFarmerButtonLevel = 1;
+    public int addCircleButtonLevel = 1;
+    public int incomeButtonLevel = 1;
     public float incomeMultiplier = 1f;
     public int[] cropPrices;
     public float offlineProgressNum;
@@ -39,7 +39,7 @@ public class GameDataManager : MonoBehaviour
         set
         {
             totalMoney = value;
-            
+
         }
     }
 
@@ -76,7 +76,7 @@ public class GameDataManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -100,26 +100,26 @@ public class GameDataManager : MonoBehaviour
 
         //button prices
         PlayerPrefs.SetString("totemUpgradeButtonMoney", TotemUpgradeButtonMoney.ToString());
-     
+
         PlayerPrefs.SetString("addFarmerButtonMoney", AddFarmerButtonMoney.ToString());
-        
+
         PlayerPrefs.SetString("incomeButtonMoney", IncomeButtonMoney.ToString());
-     
+
         PlayerPrefs.SetString("speedButtonButtonMoney", SpeedButtonButtonMoney.ToString());
-     
+
         PlayerPrefs.SetString("addCircleButtonMoney", AddCircleButtonMoney.ToString());
-        
+
         //income multiplier;
         PlayerPrefs.SetFloat("incomeMultiplier", incomeMultiplier);
     }
     public void LoadData()
     {
-        playSound =  PlayerPrefs.GetInt("playSound", 1);
-        playMusic =  PlayerPrefs.GetInt("playMusic", 1);
-        playVibrate =  PlayerPrefs.GetInt("playVibrate", 1);
+        playSound = PlayerPrefs.GetInt("playSound", 1);
+        playMusic = PlayerPrefs.GetInt("playMusic", 1);
+        playVibrate = PlayerPrefs.GetInt("playVibrate", 1);
 
         //numberOfPeople
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople",18);
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 18);
 
         //button levels
         totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
@@ -140,7 +140,7 @@ public class GameDataManager : MonoBehaviour
         temp = PlayerPrefs.GetString("addCircleButtonMoney", addCircleButtonMoney.ToString());
         AddCircleButtonMoney = Convert.ToInt64(temp);
         //income multiplier;
-        incomeMultiplier=PlayerPrefs.GetFloat("incomeMultiplier", incomeMultiplier);
+        incomeMultiplier = PlayerPrefs.GetFloat("incomeMultiplier", incomeMultiplier);
 
     }
 
@@ -154,6 +154,9 @@ public class GameDataManager : MonoBehaviour
         {
             UIManager.Instance.addPeopleButton.interactable = false;
             UIManager.Instance.addPeopleButtonLevel.text = "MAX";
+            Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.addPeopleButtonLevel.color = tempColor;
             UIManager.Instance.addPeopleButtonPrice.text = "";
         }
         //INFO JOBS 
@@ -172,10 +175,13 @@ public class GameDataManager : MonoBehaviour
 
         TotalMoney -= SpeedButtonButtonMoney;
         speedButtonLevel++;
-        if(speedButtonLevel == 30)
+        if (speedButtonLevel == 30)
         {
             UIManager.Instance.speedButton.interactable = false;
             UIManager.Instance.speedButtonLevel.text = "MAX";
+            Color tempColor = UIManager.Instance.speedButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.speedButtonLevel.color = tempColor;
             UIManager.Instance.speedButtonPrice.text = "";
         }
         SpeedButtonButtonMoney = (long)(Mathf.Pow(1.65f, speedButtonLevel) * 28);
@@ -187,7 +193,7 @@ public class GameDataManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.circleParentsList.Count; i++)
         {
-            if(i%2 == 0)
+            if (i % 2 == 0)
             {
                 GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = -(10 + speedButtonLevel);
             }
@@ -207,9 +213,9 @@ public class GameDataManager : MonoBehaviour
     {
         TotalMoney -= AddCircleButtonMoney;
         addCircleButtonLevel++;
-        
+
         AddCircleButtonMoney = (long)(Mathf.Pow(130, addCircleButtonLevel) * 15);
-        
+
         UIManager.Instance.addCircleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddCircleButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);
 
@@ -218,12 +224,12 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeIncomeMoney()
     {
-        
+
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
-        incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f))/10; //increase income percentage
-   
-        
+        incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f)) / 10; //increase income percentage
+
+
         IncomeButtonMoney = (long)(Mathf.Pow(1.6f, incomeButtonLevel) * 25);
         UIManager.Instance.incomeButtonPrice.text = FormatNumbers.AbbreviateNumber(IncomeButtonMoney) + " $";//write button money
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
@@ -243,6 +249,9 @@ public class GameDataManager : MonoBehaviour
         {
             UIManager.Instance.upgradeTotemButton.interactable = false;
             UIManager.Instance.upgradeTotemButtonLevel.text = "MAX";
+            Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
             UIManager.Instance.upgradeTotemButtonPrice.text = "";
         }
         TotemUpgradeButtonMoney = (long)(Mathf.Pow(25, totemUpgradeButtonLevel) * 3);
@@ -252,7 +261,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.rainTime += 5;
         //increase Income 
         incomeMultiplier *= 1.2f;//increase income percentage
-       
+
         UIManager.Instance.incomeInfo.text = "%" + String.Format("{0:0.00}", (incomeMultiplier) * 100);
         for (int i = 0; i < cropPrices.Length; i++)
         {
@@ -285,56 +294,89 @@ public class GameDataManager : MonoBehaviour
             if (TotalMoney >= TotemUpgradeButtonMoney) //activate totem button
             {
                 UIManager.Instance.upgradeTotemButton.interactable = true;
+
+                Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
+                tempColor.a = 1f;
+                UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.upgradeTotemButton.interactable = false;
+
+                Color tempColor = UIManager.Instance.upgradeTotemButtonLevel.color;
+                tempColor.a = 0.5f;
+                UIManager.Instance.upgradeTotemButtonLevel.color = tempColor;
             }
         }
-        if (GameManager.Instance.addFarmerShouldbeOpened && addFarmerButtonLevel !=36 )
+
+        if (GameManager.Instance.addFarmerShouldbeOpened && addFarmerButtonLevel != 36)
         {
             if (TotalMoney >= AddFarmerButtonMoney) //activate add farmer button
             {
                 UIManager.Instance.addPeopleButton.interactable = true;
+
+                Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
+                tempColor.a = 1f;
+                UIManager.Instance.addPeopleButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.addPeopleButton.interactable = false;
+
+                Color tempColor = UIManager.Instance.addPeopleButtonLevel.color;
+                tempColor.a = 0.5f;
+                UIManager.Instance.addPeopleButtonLevel.color = tempColor;
             }
         }
-        
-        
+
         if (TotalMoney >= IncomeButtonMoney) //activate income button
         {
             UIManager.Instance.incomeButton.interactable = true;
+
+            Color tempColor = UIManager.Instance.incomeButtonLevel.color;
+            tempColor.a = 1f;
+            UIManager.Instance.incomeButtonLevel.color = tempColor;
         }
         else
         {
             UIManager.Instance.incomeButton.interactable = false;
+
+            Color tempColor = UIManager.Instance.incomeButtonLevel.color;
+            tempColor.a = 0.5f;
+            UIManager.Instance.incomeButtonLevel.color = tempColor;
         }
-        if(speedButtonLevel != 30)
+
+        if (speedButtonLevel != 30)
         {
             if (TotalMoney >= SpeedButtonButtonMoney) //activate speed button
             {
                 UIManager.Instance.speedButton.interactable = true;
+
+                Color tempColor = UIManager.Instance.speedButtonLevel.color;
+                tempColor.a = 1f;
+                UIManager.Instance.speedButtonLevel.color = tempColor;
             }
             else
             {
                 UIManager.Instance.speedButton.interactable = false;
-            }
 
+                Color tempColor = UIManager.Instance.speedButtonLevel.color;
+                tempColor.a = 0.5f;
+                UIManager.Instance.speedButtonLevel.color = tempColor;
+            }
         }
+
         if (GameManager.Instance.addCircleShouldbeOpened)
         {
             if (TotalMoney >= AddCircleButtonMoney) //activate add circle button
             {
                 UIManager.Instance.addCircleButton.interactable = true;
+
             }
             else
             {
                 UIManager.Instance.addCircleButton.interactable = false;
             }
         }
-        
     }
 }

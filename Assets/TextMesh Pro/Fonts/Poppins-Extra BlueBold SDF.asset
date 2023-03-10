@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Poppins-Extra BlueBold SDF
   m_EditorClassIdentifier: 
-  hashCode: -744137624
+  hashCode: 1170183190
   material: {fileID: 5052939407365030794}
-  materialHashCode: -1585044024
+  materialHashCode: 1243238902
   m_Version: 1.1.0
   m_SourceFontFileGUID: d3ea9f7f859645d46b3326768b92c147
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d3ea9f7f859645d46b3326768b92c147, type: 3}
