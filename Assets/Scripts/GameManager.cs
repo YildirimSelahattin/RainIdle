@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[0], farmRadiuses[0],circleCount);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
-            Debug.Log("hiko");
+            
             GameObject tempFarmer = Instantiate(circleManArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], circleParentsList[circleCount].GetComponent<CircleManager>().listOfGrids[indexToAddNext].transform);
             farmerList.Add(tempFarmer);
             //delete base and Instantiate base and farm part
@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
                 farmParentsList.Add(currentFarm);
 
                 //add cutter farmer
+                Debug.Log("Farmer Circle Count: " + circleCount);
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
                 for (counter = 1; counter < howManyPeopleToAdd; counter++)
                 {
@@ -177,14 +178,9 @@ public class GameManager : MonoBehaviour
         //speedlevel;
         for (int i = 0; i < circleParentsList.Count; i++)
         {
-            if (i % 2 == 0)
-            {
-               circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = -(10 + GameDataManager.Instance.speedButtonLevel + (GameDataManager.Instance.totemUpgradeButtonLevel-1));
-            }
-            else
-            {
-                circleParentsList[i].GetComponent<RotateCircle>().planetSpeed = 10 + GameDataManager.Instance.speedButtonLevel+ (GameDataManager.Instance.totemUpgradeButtonLevel - 1);
-            }
+            
+               circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= (Mathf.Pow(1.1f, GameDataManager.Instance.totemUpgradeButtonLevel - 1));
+            
         }
 
         //totem level effects
@@ -293,7 +289,6 @@ public class GameManager : MonoBehaviour
     public void OnClickAddCircle()
     {
         GameDataManager.Instance.UpgradeAddCircleMoney();
-        
         currentCircle++;
         Camera.main.orthographicSize = cameraSizeArray[currentCircle];
         indexToAddNext = 1;

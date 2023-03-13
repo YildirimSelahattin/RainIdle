@@ -161,7 +161,7 @@ public class GameDataManager : MonoBehaviour
             UIManager.Instance.addPeopleButtonPrice.text = "";
         }
         //INFO JOBS 
-        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString();
+        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString() + " people";
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.PeopleInfo.gameObject.transform);
         //BUTTON JOBS
         UIManager.Instance.addPeopleButtonPrice.text = FormatNumbers.AbbreviateNumber(AddFarmerButtonMoney) + " $";//write button money
@@ -212,6 +212,8 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeAddCircleMoney()
     {
+        numberOfPeople++;
+        UIManager.Instance.PeopleInfo.text = numberOfPeople.ToString() + " people";
         TotalMoney -= AddCircleButtonMoney;
         addCircleButtonLevel++;
 
@@ -225,7 +227,6 @@ public class GameDataManager : MonoBehaviour
 
     public void UpgradeIncomeMoney()
     {
-
         TotalMoney -= IncomeButtonMoney;//decrease total money 
         incomeButtonLevel++;//increase button level
         incomeMultiplier += (incomeButtonLevel + (incomeButtonLevel * 0.1f)) / 10; //increase income percentage
@@ -273,11 +274,11 @@ public class GameDataManager : MonoBehaviour
         {
             if (i % 2 == 0)
             {
-                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed -= speedButtonLevel;
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
             }
             else
             {
-                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed += speedButtonLevel;
+                GameManager.Instance.circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= 1.1f;
             }
         }
 

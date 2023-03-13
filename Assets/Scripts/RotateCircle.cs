@@ -21,5 +21,6 @@ public class RotateCircle : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * rainMultiplier * tapSpeedMultiplier);
+        UIManager.Instance.speedInfo.text = Mathf.Abs(planetSpeed * rainMultiplier * tapSpeedMultiplier).ToString()+" m/s";
     }
 }

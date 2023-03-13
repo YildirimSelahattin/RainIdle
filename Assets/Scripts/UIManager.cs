@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
     }
     public void WriteInfos()
     {
-        speedInfo.text = (10 + (GameDataManager.Instance.speedButtonLevel)).ToString()+" m/s";
+        
         incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString()+" %" ;
         PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString() + " people" ;
     }
@@ -143,8 +143,10 @@ public class UIManager : MonoBehaviour
             else
             {
                 speedButtonUp = false;
+                RotateCircle.tapSpeedMultiplier = 1;
             }
         }
+
         if (shouldCount == true)
         {
             if (fillCounter < fillTime)
@@ -161,8 +163,6 @@ public class UIManager : MonoBehaviour
             }
         }
        
-
-        
         /*
         if(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed < (10 + (GameDataManager.Instance.speedButtonLevel * 1f)))
             GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed -= timeLeft * 2;
@@ -226,7 +226,7 @@ public class UIManager : MonoBehaviour
 
         rainParticles.SetActive(true);
         rainButton.interactable = false;
-        RotateCircle.rainMultiplier = 2f;
+        RotateCircle.rainMultiplier = 1.3f;
         rainButton.interactable = false;
         fillCounter = 0;
         yield return new WaitForSeconds(time);
@@ -252,7 +252,7 @@ public class UIManager : MonoBehaviour
         if (tapIncreaseSpeedCounter < 5)
         {
             tapIncreaseSpeedCounter += 1;
-            RotateCircle.tapSpeedMultiplier += 1.1f;
+            RotateCircle.tapSpeedMultiplier += 0.25f;
             Debug.Log("Tap: " + RotateCircle.tapSpeedMultiplier);
             StartCoroutine(DecreaseSpeed());
         }
