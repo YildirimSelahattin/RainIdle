@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,6 @@ public class RotateCircle : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up * planetSpeed * Time.deltaTime * rainMultiplier * tapSpeedMultiplier);
-        UIManager.Instance.speedInfo.text = Mathf.Abs(planetSpeed * rainMultiplier * tapSpeedMultiplier).ToString()+" m/s";
+        UIManager.Instance.speedInfo.text = String.Format("{0:0.00}", Mathf.Abs(planetSpeed * rainMultiplier * tapSpeedMultiplier))+" m/s";
     }
 }

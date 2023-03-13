@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
     public void WriteInfos()
     {
         
-        incomeInfo.text = (GameDataManager.Instance.incomeMultiplier * 100).ToString()+" %" ;
+       incomeInfo.text = String.Format("{0:0.00}", (GameDataManager.Instance.incomeMultiplier * 100)); ;
         PeopleInfo.text = GameDataManager.Instance.numberOfPeople.ToString() + " people" ;
     }
 

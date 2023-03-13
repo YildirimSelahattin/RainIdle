@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
                 int howManyPeopleToAdd = 0;
                 if (numberOfGridsInCircle[circleCount]-1 > tempNumberOfPeople)
                 {
-                    howManyPeopleToAdd = tempNumberOfPeople;
+                    howManyPeopleToAdd = tempNumberOfPeople+1;
                     tempNumberOfPeople = 0;
                 }
                 else
@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
                 //add cutter farmer
                 Debug.Log("Farmer Circle Count: " + circleCount);
                 Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
+                Debug.Log("people" + howManyPeopleToAdd);
                 for (counter = 1; counter < howManyPeopleToAdd; counter++)
                 {
                     GameObject characterToAdd = null;
