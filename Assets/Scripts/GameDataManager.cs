@@ -116,7 +116,7 @@ public class GameDataManager : MonoBehaviour
         playVibrate = PlayerPrefs.GetInt("playVibrate", 1);
 
         //numberOfPeople
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 1);
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 6);
 
         //button levels
         totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
@@ -204,7 +204,6 @@ public class GameDataManager : MonoBehaviour
             }
         }
         //INFO JOBS
-        UIManager.Instance.speedInfo.text = Mathf.Abs(GameManager.Instance.circleParentsList[0].GetComponent<RotateCircle>().planetSpeed).ToString();
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.speedInfo.gameObject.transform);
         ControlButtons();
         SaveData();
@@ -237,7 +236,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         UIManager.Instance.incomeButtonLevel.text = "LEVEL " + incomeButtonLevel.ToString();
         //INFO JOBS 
-        UIManager.Instance.incomeInfo.text = (incomeMultiplier * 100).ToString();
+        UIManager.Instance.incomeInfo.text = String.Format("{0:0.00}",(incomeMultiplier * 100));
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.incomeInfo.gameObject.transform);
         ControlButtons();
         SaveData();
