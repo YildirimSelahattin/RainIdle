@@ -880,7 +880,7 @@ MonoBehaviour:
   addCircleButtonLevel: 1
   incomeButtonLevel: 1
   incomeMultiplier: 1
-  cropPrices: 020000000400000006000000
+  cropPrices: 02000000040000000c000000
   offlineProgressNum: 1
   cropSounds:
   - {fileID: 8300000, guid: fdf573dee0cb8f248b226c1fec28b51d, type: 3}
@@ -3517,7 +3517,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80c9c887f09c28c41b45fa3832565cad, type: 2}
+  - {fileID: 2100000, guid: ef559d33000a313419a469f7b037f130, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
