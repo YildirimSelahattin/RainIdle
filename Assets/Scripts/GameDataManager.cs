@@ -116,7 +116,7 @@ public class GameDataManager : MonoBehaviour
         playVibrate = PlayerPrefs.GetInt("playVibrate", 1);
 
         //numberOfPeople
-        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 6);
+        numberOfPeople = PlayerPrefs.GetInt("numberOfPeople", 1);
 
         //button levels
         totemUpgradeButtonLevel = PlayerPrefs.GetInt("totemUpgradeButtonLevel", totemUpgradeButtonLevel);
@@ -137,7 +137,7 @@ public class GameDataManager : MonoBehaviour
         temp = PlayerPrefs.GetString("addCircleButtonMoney", addCircleButtonMoney.ToString());
         AddCircleButtonMoney = Convert.ToInt64(temp);
 
-        temp = PlayerPrefs.GetString("TotalMoney", 1.ToString());
+        temp = PlayerPrefs.GetString("TotalMoney", 300.ToString());
         TotalMoney = Convert.ToInt64(temp);
         
         //income multiplier;
