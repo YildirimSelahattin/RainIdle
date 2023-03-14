@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public int currentCircle;
     public bool addFarmerShouldbeOpened;
     public bool addCircleShouldbeOpened;
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         circleCutterArray.Add(circles0CutterCharacterArray);
         circleCutterArray.Add(circles1CutterCharacterArray);
-        circleCutterArray.Add(circles1CutterCharacterArray);
+        circleCutterArray.Add(circles2CutterCharacterArray);
 
         circleManArray.Add(circles0ManArray);
         circleManArray.Add(circles1ManArray);
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
         if(tempNumberOfPeople == 1)
         {
-            GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[0], circleRadiuses[0]);
+            GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[0], circleRadiuses[0], circleCount);
             GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[0], farmRadiuses[0],circleCount);
             circleParentsList.Add(currentCircle);
             farmParentsList.Add(currentFarm);
@@ -110,14 +111,14 @@ public class GameManager : MonoBehaviour
                     tempNumberOfPeople -= numberOfGridsInCircle[circleCount]-1;
                     howManyPeopleToAdd = numberOfGridsInCircle[circleCount];
                 }
-                GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount]);
+                GameObject currentCircle = CreateCircleGameData(numberOfGridsInCircle[circleCount], circleRadiuses[circleCount], circleCount);
                 GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[circleCount], farmRadiuses[circleCount],circleCount);
                 circleParentsList.Add(currentCircle);
                 farmParentsList.Add(currentFarm);
 
                 //add cutter farmer
                 Debug.Log("Farmer Circle Count: " + circleCount);
-                Instantiate(circleCutterArray[circleCount][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircle.transform.GetChild(0).transform);
+                Instantiate(circleCutterArray[circleCount][1], currentCircle.transform.GetChild(0).transform);
                 Debug.Log("people" + howManyPeopleToAdd);
                 for (counter = 1; counter < howManyPeopleToAdd; counter++)
                 {
@@ -179,9 +180,7 @@ public class GameManager : MonoBehaviour
         //speedlevel;
         for (int i = 0; i < circleParentsList.Count; i++)
         {
-            
                circleParentsList[i].GetComponent<RotateCircle>().planetSpeed *= (Mathf.Pow(1.1f, GameDataManager.Instance.totemUpgradeButtonLevel - 1));
-            
         }
 
         //totem level effects
@@ -189,19 +188,23 @@ public class GameManager : MonoBehaviour
         GameDataManager.Instance.incomeMultiplier *= Mathf.Pow(1.2f, GameDataManager.Instance.totemUpgradeButtonLevel - 1);
         UIManager.Instance.WriteInfos();
     }
-    public GameObject CreateCircleGameData(int numberOfObjects, float radius)
+    public GameObject CreateCircleGameData(int numberOfObjects, float radius, int curentCircle)
     {
         GameObject temp = new GameObject();
         temp.name = "Circle";
         GameObject parentCircle = Instantiate(temp, new Vector3(0, 0, 0), Quaternion.identity, CircleParentsParent.transform);
         parentCircle.AddComponent<CircleManager>();
         parentCircle.AddComponent<RotateCircle>();
-        if (currentCircle % 2 == 0)
+
+        Debug.Log("CurrentCircle: " + curentCircle);
+
+        if (curentCircle % 2 == 0)
         {
             parentCircle.GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
         else
         {
+            Debug.Log("fsadfsdfsdfsd");
             parentCircle.GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
 
@@ -218,6 +221,7 @@ public class GameManager : MonoBehaviour
         }
         return parentCircle;
     }
+
     public GameObject CreateFarmGameData(int numberOfObjects, float radius,int currentCircle)
     {
         GameObject temp = new GameObject();
@@ -293,7 +297,7 @@ public class GameManager : MonoBehaviour
         currentCircle++;
         Camera.main.orthographicSize = cameraSizeArray[currentCircle];
         indexToAddNext = 1;
-        GameObject currentCircleObject = CreateCircleGameData(numberOfGridsInCircle[currentCircle], circleRadiuses[currentCircle]);
+        GameObject currentCircleObject = CreateCircleGameData(numberOfGridsInCircle[currentCircle], circleRadiuses[currentCircle], currentCircle);
         circleParentsList.Add(currentCircleObject);
         Instantiate(circleCutterArray[currentCircle][GameDataManager.Instance.totemUpgradeButtonLevel], currentCircleObject.transform.GetChild(0).transform);
         GameObject currentFarm = CreateFarmGameData(numberOfGridsInFarm[currentCircle], farmRadiuses[currentCircle], currentCircle);

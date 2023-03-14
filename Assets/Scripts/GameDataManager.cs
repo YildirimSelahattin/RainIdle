@@ -236,7 +236,7 @@ public class GameDataManager : MonoBehaviour
         UIManager.Instance.totalMoneyText.text = FormatNumbers.AbbreviateNumberForTotalMoney(TotalMoney);//write total money
         UIManager.Instance.incomeButtonLevel.text = "LEVEL " + incomeButtonLevel.ToString();
         //INFO JOBS 
-        UIManager.Instance.incomeInfo.text = String.Format("{0:0.00}",(incomeMultiplier * 100));
+        UIManager.Instance.incomeInfo.text = "%" + String.Format(" {0:0.00}",(incomeMultiplier * 100));
         Instantiate(UIManager.Instance.increaseParticleGameObject, UIManager.Instance.incomeInfo.gameObject.transform);
         ControlButtons();
         SaveData();
@@ -263,7 +263,7 @@ public class GameDataManager : MonoBehaviour
         //increase Income 
         incomeMultiplier *= 1.2f;//increase income percentage
 
-        UIManager.Instance.incomeInfo.text = "%" + String.Format("{0:0.00}", (incomeMultiplier) * 100);
+        UIManager.Instance.incomeInfo.text = "%" + String.Format(" {0:0.00}", (incomeMultiplier) * 100);
         for (int i = 0; i < cropPrices.Length; i++)
         {
             //UIManager.Instance.cropMoneyInfoArray[i].text = FormatNumbers.RoundNumberLikeText((long)cropPrices[i]*incomeMultiplier).ToString()+ " $";
