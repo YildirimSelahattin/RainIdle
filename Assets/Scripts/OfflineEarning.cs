@@ -31,12 +31,12 @@ public class OfflineEarning : MonoBehaviour
 
             TimeSpan ts = DateTime.Now - lastLogIn;
 
-            Debug.Log(ts.TotalSeconds);
+            //Debug.Log(ts.TotalSeconds);
 
             if (ts.TotalSeconds < 86400)
             {
                 offlineRewardMoney = FormatNumbers.RoundNumberLikeText((long)(GameDataManager.Instance.offlineProgressNum * GameDataManager.Instance.incomeMultiplier * (float)ts.TotalSeconds));
-                Debug.Log(offlineRewardMoney);
+                //Debug.Log(offlineRewardMoney);
                 offlineMoneyText.GetComponent<TextMeshProUGUI>().text = FormatNumbers.AbbreviateNumber((long)offlineRewardMoney);
             }
             else

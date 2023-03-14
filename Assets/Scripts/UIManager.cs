@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     public Button addCircleButton;
     public TextMeshProUGUI addCircleButtonPrice;
     public Button rainButton;
+    public GameObject rainButtonScale;
     public GameObject rainParticles;
     public float rainTime = 10;
     public float timeLeft = 3;
@@ -160,6 +161,7 @@ public class UIManager : MonoBehaviour
                 shouldCount = false;
                 rainButton.interactable = true;
                 FillRainButton();
+                rainButtonScale.GetComponent<Animator>().enabled = true;
             }
         }
        
@@ -213,6 +215,7 @@ public class UIManager : MonoBehaviour
 
     public void OnRainButton()
     {
+        rainButtonScale.GetComponent<Animator>().enabled = false;
         rainButton.gameObject.AddComponent<ShakeButton>();
         StartCoroutine(RainTimeCounter(rainTime));
     }
@@ -229,19 +232,19 @@ public class UIManager : MonoBehaviour
         RotateCircle.rainMultiplier = 1.3f;
         rainButton.interactable = false;
         fillCounter = 0;
+        rainDropImage.fillAmount = 0;
+
         yield return new WaitForSeconds(time);
-        
         rainParticles.SetActive(false);
         RotateCircle.rainMultiplier = 1f;
         rainMusic.SetActive(false);
-        rainDropImage.fillAmount = 0;
         Destroy(rainButton.gameObject.GetComponent<ShakeButton>());
         StartCoroutine(StartFillingRainButton());
     }
 
     public IEnumerator StartFillingRainButton()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(3);
         shouldCount = true;
     }
     

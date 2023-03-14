@@ -196,15 +196,12 @@ public class GameManager : MonoBehaviour
         parentCircle.AddComponent<CircleManager>();
         parentCircle.AddComponent<RotateCircle>();
 
-        Debug.Log("CurrentCircle: " + curentCircle);
-
         if (curentCircle % 2 == 0)
         {
             parentCircle.GetComponent<RotateCircle>().planetSpeed = -(10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
         else
         {
-            Debug.Log("fsadfsdfsdfsd");
             parentCircle.GetComponent<RotateCircle>().planetSpeed = (10 + (GameDataManager.Instance.speedButtonLevel * 1f));
         }
 

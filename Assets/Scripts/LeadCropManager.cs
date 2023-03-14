@@ -36,7 +36,6 @@ public class LeadCropManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Cutter1")
         {
-            Debug.Log("dasdasdasdasdasdasdd");
             transform.DOKill();
             transform.DOLocalMoveY(wantedPos.y, 0.2f).SetEase(Ease.Linear).OnComplete(() => CropGrow());
             transform.DOScale(originalScale / 20, 0.2f);
