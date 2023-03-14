@@ -230,6 +230,7 @@ public class UIManager : MonoBehaviour
         rainButton.interactable = false;
         fillCounter = 0;
         yield return new WaitForSeconds(time);
+        
         rainParticles.SetActive(false);
         RotateCircle.rainMultiplier = 1f;
         rainMusic.SetActive(false);
