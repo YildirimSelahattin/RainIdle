@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using HomaGames.HomaBelly;
+//C:\Users\selah\Documents\GitHub\RainIdle\UserSettings\user.keystore
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        DefaultAnalytics.GameplayStarted();
+
         circleCutterArray.Add(circles0CutterCharacterArray);
         circleCutterArray.Add(circles1CutterCharacterArray);
         circleCutterArray.Add(circles2CutterCharacterArray);
@@ -261,7 +264,7 @@ public class GameManager : MonoBehaviour
             GameObject tempCrop = Instantiate(farmCropArray[currentCircle], farmParentsList[currentCircle].transform.GetChild(indexToAddNext-1).transform);
             //farm instantiate
             indexToAddNext++;
-            
+            DefaultAnalytics.LevelStarted(indexToAddNext.ToString());
 
             foreach (GameObject farmer in farmerList)
             {
